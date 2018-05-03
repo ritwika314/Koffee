@@ -70,7 +70,7 @@ We define several useful ASTs to write our parser in the file <em>asts.py</em>.<
 
 <dl class="class">
 <dt id="asts.AtomicAst">
-<em class="property">class </em><code class="descclassname">asts.</code><code class="descname">AtomicAst</code><span class="sig-paren">(</span><em>wnum</em>, <em>stmts</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.AtomicAst" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">asts.</code><code class="descname">AtomicAst</code><span class="sig-paren">(</span><em>wn</em>, <em>stmts</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.AtomicAst" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <a class="reference internal" href="#asts.StmtAst" title="asts.StmtAst"><code class="xref py py-class docutils literal notranslate"><span class="pre">asts.StmtAst</span></code></a></p>
 <p>Ast for atomic blocks</p>
 <dl class="method">
@@ -81,6 +81,19 @@ We define several useful ASTs to write our parser in the file <em>asts.py</em>.<
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the statement type</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.AtomicAst.get_wnum">
+<code class="descname">get_wnum</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.AtomicAst.get_wnum" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the ith atomic block returns i</td>
 </tr>
 </tbody>
 </table>

@@ -37,6 +37,68 @@
 which takes in the abstract syntax trees and generates the corresponding
 java code.</p>
 <dl class="function">
+<dt id="codegen.ar_get_codegen">
+<code class="descclassname">codegen.</code><code class="descname">ar_get_codegen</code><span class="sig-paren">(</span><em>var</em>, <em>owner</em><span class="sig-paren">)</span><a class="headerlink" href="#codegen.ar_get_codegen" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>var</strong> – variable name</li>
+<li><strong>owner</strong> – pid</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Get code generation for allread</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="codegen.ar_put_codegen">
+<code class="descclassname">codegen.</code><code class="descname">ar_put_codegen</code><span class="sig-paren">(</span><em>var</em><span class="sig-paren">)</span><a class="headerlink" href="#codegen.ar_put_codegen" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>var</strong> – variable</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">put code generation for allread</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="codegen.aw_get_codegen">
+<code class="descclassname">codegen.</code><code class="descname">aw_get_codegen</code><span class="sig-paren">(</span><em>var</em>, <em>owner</em><span class="sig-paren">)</span><a class="headerlink" href="#codegen.aw_get_codegen" title="Permalink to this definition">¶</a></dt>
+<dd><p>get code generation for allwrite</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="codegen.aw_put_codegen">
+<code class="descclassname">codegen.</code><code class="descname">aw_put_codegen</code><span class="sig-paren">(</span><em>var</em><span class="sig-paren">)</span><a class="headerlink" href="#codegen.aw_put_codegen" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>var</strong> – variable</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">put code generation for allwrite</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="codegen.checknull">
+<code class="descclassname">codegen.</code><code class="descname">checknull</code><span class="sig-paren">(</span><em>var</em>, <em>stages=False</em>, <em>event=None</em><span class="sig-paren">)</span><a class="headerlink" href="#codegen.checknull" title="Permalink to this definition">¶</a></dt>
+<dd><p>auxiliary function for checking if variable is null, break or continue accordingly</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="codegen.codegen">
 <code class="descclassname">codegen.</code><code class="descname">codegen</code><span class="sig-paren">(</span><em>input_ast</em>, <em>symtab</em>, <em>tabs=0</em>, <em>wnum=0</em><span class="sig-paren">)</span><a class="headerlink" href="#codegen.codegen" title="Permalink to this definition">¶</a></dt>
 <dd><p>The main code generation function. It takes as input an AST,
@@ -49,6 +111,21 @@ tabs (int): indentation for generated java program.</dd>
 <dt>Returns:</dt>
 <dd>generated_code (str): java code as a string.</dd>
 </dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="codegen.createval">
+<code class="descclassname">codegen.</code><code class="descname">createval</code><span class="sig-paren">(</span><em>dtype</em><span class="sig-paren">)</span><a class="headerlink" href="#codegen.createval" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dtype</strong> – datatype for creating numeric default value</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="function">
@@ -71,8 +148,31 @@ tabs (int): indentation for generated java program.</dd>
 
 <dl class="function">
 <dt id="codegen.get_starl_code">
-<code class="descclassname">codegen.</code><code class="descname">get_starl_code</code><span class="sig-paren">(</span><em>app_code</em><span class="sig-paren">)</span><a class="headerlink" href="#codegen.get_starl_code" title="Permalink to this definition">¶</a></dt>
-<dd><p>function for wrapping the event code in the loop.</p>
+<code class="descclassname">codegen.</code><code class="descname">get_starl_code</code><span class="sig-paren">(</span><em>app_code</em>, <em>symtab</em>, <em>delta=100</em><span class="sig-paren">)</span><a class="headerlink" href="#codegen.get_starl_code" title="Permalink to this definition">¶</a></dt>
+<dd><p>function for wrapping the event code in the loop. This is where you can change DELTA.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="codegen.get_vars">
+<code class="descclassname">codegen.</code><code class="descname">get_vars</code><span class="sig-paren">(</span><em>expr</em><span class="sig-paren">)</span><a class="headerlink" href="#codegen.get_vars" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>expr</strong> – expression</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">variables in an expression</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="codegen.mk_dsms">
+<code class="descclassname">codegen.</code><code class="descname">mk_dsms</code><span class="sig-paren">(</span><em>symtab</em><span class="sig-paren">)</span><a class="headerlink" href="#codegen.mk_dsms" title="Permalink to this definition">¶</a></dt>
+<dd><p>creating DSM variables
+:param symtab: input symbol table
+:return: string with dsm declarations.</p>
 </dd></dl>
 
 </div>

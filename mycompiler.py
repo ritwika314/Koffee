@@ -33,12 +33,6 @@ class MyCompiler(object):
         pgm = (self.parser.parse(code))
         return pgm, symtab
 
-    def gen_java(self, filename):
-        '''
-        Function to call the code generation on the AST obtained after compiling.
-        '''
-        pgm, symtab = self.compile(filename)
-        return codegen(pgm, symtab)
 
 def krd_to_java(filename):
     '''
@@ -47,7 +41,7 @@ def krd_to_java(filename):
     pgm, symtab = MyCompiler().compile(filename)
     java_filename = pgm.get_name()+"App.java"
     java_file = open(java_filename, "w")
-    code = MyCompiler().gen_java(filename)
+    code = codegen(pgm, symtab, 0, kparser.wnum)
     java_file.write(code)
     java_file.close()
 

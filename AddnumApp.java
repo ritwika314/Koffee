@@ -20,6 +20,8 @@ public class AddnumApp extends LogicThread  {
 
    private static final String TAG = "AddnumApp";
    private DSM dsm;
+   private MutualExclusion mutex0;
+   private boolean wait0 = false;
    private int numBots;
    private int pid;
    
@@ -36,21 +38,38 @@ public class AddnumApp extends LogicThread  {
       pid = Integer.parseInt(intValue);
       numBots = gvh.id.getParticipants().size();
       dsm = new DSMMultipleAttr(gvh);
+      mutex0 = new GroupSetMutex(gvh,0);
       
    }
    @Override
    public List<Object> callStarL()  {
    
+      dsm.createMW("sum",0);
+      dsm.createMW("numadded",0);
       while(true)  {
       
+         sleep(100);
+         //adding
          if (!(added)) {
          
-            sum = (sum + (pid * 2));
-            numadded = (numadded + 1);
-            added = true;
+            if(!wait0) {
+            
+               mutex0.requestEntry(0);
+               wait0 = true;
+               
+            }
+            if (mutex0.clearToEnter(0))  {
+            
+               sum = (sum + (pid * 2));
+               numadded = (numadded + 1);
+               added = true;
+               mutex0.exit(0);
+               
+            }
             continue;
             
          }
+         //finalsum
          if ((numadded == numBots)) {
          
             finalsum = sum;

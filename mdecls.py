@@ -21,10 +21,13 @@ def mandatory_decls(input_ast, wnum):
     inputast_name = input_ast.get_name()
     tag_string = "private static final String TAG = " + '"' + inputast_name + 'App"'
     return_string += generic.mk_stmt(tag_string)
-    for i in range(0, wnum):
-        return_string += generic.mk_stmt("private MutualExclusion mutex" + str(i))
     if input_ast.has_flag('allwrite') or input_ast.has_flag('allread'):
         return_string += generic.mk_stmt('private DSM dsm')
+
+    for i in range(0,wnum):
+        return_string += generic.mk_stmt("private MutualExclusion mutex" + str(i))
+        return_string += generic.mk_stmt("private boolean wait" + str(i) + " = false")
+
     return_string += generic.mk_stmt('private int numBots')
     return_string += generic.mk_stmt('private int pid')
     return return_string

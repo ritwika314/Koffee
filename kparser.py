@@ -70,7 +70,8 @@ from ply import *
 from asts import *
 from scanner import *
 from indentlexer import *
-
+global wnum
+wnum = 0
 
 def p_pgm(p):
     '''pgm : agnt defs modules declblock initblock events'''
@@ -197,6 +198,12 @@ def p_varname(p):
     p[0] = ExprAst(VARTYPE, p[1])
 
 
+precedence = (
+    ('left', 'PLUS', 'MINUS'),
+    ('left', 'TIMES', 'BY'),
+)
+
+
 def p_exp(p):
     '''exp : bracketexp
            | exp PLUS exp
@@ -297,6 +304,7 @@ def p_stmts(p):
 def p_stmt(p):
     '''
     stmt : asgn
+         | atomic
     '''
     p[0] = p[1]
 
@@ -305,6 +313,14 @@ def p_asgn(p):
     '''asgn : varname ASGN exp NL
     '''
     p[0] = (AsgnAst(p[1], p[3]))
+
+
+def p_atomic(p):
+    '''atomic : ATOMIC COLON NL INDENT stmts DEDENT
+    '''
+    global wnum
+    p[0] = AtomicAst(wnum,p[5])
+    wnum += 1
 
 
 def p_events(p):

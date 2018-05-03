@@ -11,7 +11,7 @@ local:
 adding:
   pre: (!added) 
   eff :
-#      atomic: 
+     atomic: 
        sum = sum + (pid * 2)  
        numadded = numadded + 1
        added = true 
@@ -19,6 +19,6 @@ adding:
 finalsum:
   pre:(numadded == numBots)
   eff :
-      finalsum = sum
+        finalsum = sum
 
    

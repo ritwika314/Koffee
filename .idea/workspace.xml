@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="269f8dc4-c14c-4a03-83ec-13c3c1214e9f" name="Default" comment="" />
+    <list default="true" id="269f8dc4-c14c-4a03-83ec-13c3c1214e9f" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AddnumApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/AddnumApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asts.py" beforeDir="false" afterPath="$PROJECT_DIR$/asts.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/asttypes.py" beforeDir="false" afterPath="$PROJECT_DIR$/asttypes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/codegen.doctree" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/codegen.doctree" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/doctrees/environment.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/build/doctrees/environment.pickle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/codegen.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/codegen.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/html/searchindex.js" beforeDir="false" afterPath="$PROJECT_DIR$/build/html/searchindex.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/codegen.py" beforeDir="false" afterPath="$PROJECT_DIR$/codegen.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/kparser.py" beforeDir="false" afterPath="$PROJECT_DIR$/kparser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mdecls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mdecls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mycompiler.py" beforeDir="false" afterPath="$PROJECT_DIR$/mycompiler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parser.out" beforeDir="false" afterPath="$PROJECT_DIR$/parser.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/parsetab.py" beforeDir="false" afterPath="$PROJECT_DIR$/parsetab.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sparser.py" beforeDir="false" afterPath="$PROJECT_DIR$/sparser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.krd" beforeDir="false" afterPath="$PROJECT_DIR$/test.krd" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -15,20 +32,21 @@
       <file leaf-file-name="asts.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/asts.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="551">
-              <caret line="424" column="32" selection-start-line="424" selection-start-column="32" selection-end-line="424" selection-end-column="32" />
+            <state relative-caret-position="-360">
+              <caret line="121" column="20" lean-forward="true" selection-start-line="121" selection-start-column="20" selection-end-line="121" selection-end-column="20" />
               <folding>
                 <element signature="e#390#681#0" />
                 <element signature="e#709#2120#0" />
                 <element signature="e#2148#2607#0" />
-                <element signature="e#2283#4604#0" />
                 <element signature="e#4500#4604#0" />
                 <element signature="e#4633#5693#0" />
                 <element signature="e#5720#6030#0" />
                 <element signature="e#6062#6586#0" />
                 <element signature="e#7091#7729#0" />
                 <element signature="e#7002#7749#0" />
+                <element signature="e#7776#8417#0" />
                 <element signature="e#7776#7811#1" />
+                <element signature="e#7871#8072#0" />
                 <element signature="e#9247#10075#0" />
               </folding>
             </state>
@@ -38,15 +56,22 @@
       <file leaf-file-name="codegen.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/codegen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-694">
-              <caret line="51" column="7" lean-forward="true" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
+            <state relative-caret-position="195">
+              <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
               <folding>
-                <element signature="e#23#291#1" />
                 <element signature="e#428#584#0" />
                 <element signature="e#621#761#0" />
                 <element signature="e#799#920#0" />
-                <element signature="e#956#1241#0" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="codegen.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Koord-Front-End/KoordFE/codegen.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="67" column="29" selection-start-line="67" selection-start-column="29" selection-end-line="67" selection-end-column="29" />
             </state>
           </provider>
         </entry>
@@ -54,10 +79,44 @@
       <file leaf-file-name="kparser.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/kparser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1309">
-              <caret line="229" selection-start-line="229" selection-end-line="229" />
+            <state relative-caret-position="1860">
+              <caret line="321" column="31" selection-start-line="321" selection-start-column="31" selection-end-line="321" selection-end-column="31" />
               <folding>
-                <element signature="e#7038#7409#0" />
+                <element signature="e#1736#1844#0" />
+                <element signature="e#1866#1907#0" />
+                <element signature="e#1929#1989#0" />
+                <element signature="e#2010#2048#0" />
+                <element signature="e#2073#2152#0" />
+                <element signature="e#2175#2244#0" />
+                <element signature="e#2175#2230#1" />
+                <element signature="e#2269#2521#0" />
+                <element signature="e#2545#2700#0" />
+                <element signature="e#2724#2878#0" />
+                <element signature="e#2902#3047#0" />
+                <element signature="e#3070#3224#0" />
+                <element signature="e#3246#3385#0" />
+                <element signature="e#3407#3502#0" />
+                <element signature="e#3407#3488#1" />
+                <element signature="e#3523#3577#0" />
+                <element signature="e#3602#3664#0" />
+                <element signature="e#3689#3747#0" />
+                <element signature="e#3768#3823#0" />
+                <element signature="e#3768#4107#0" />
+                <element signature="e#4135#4184#0" />
+                <element signature="e#4205#4280#0" />
+                <element signature="e#4302#4377#0" />
+                <element signature="e#4404#4479#0" />
+                <element signature="e#4504#4663#0" />
+                <element signature="e#4688#4845#0" />
+                <element signature="e#4871#4966#0" />
+                <element signature="e#4993#5147#0" />
+                <element signature="e#5482#5609#0" />
+                <element signature="e#5632#5742#0" />
+                <element signature="e#5768#5924#0" />
+                <element signature="e#5946#6347#0" />
+                <element signature="e#6367#6479#0" />
+                <element signature="e#6502#6524#0" />
+                <element signature="e#6547#6643#0" />
               </folding>
             </state>
           </provider>
@@ -66,8 +125,8 @@
       <file leaf-file-name="parser.py.old" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/parser.py.old">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="319" selection-start-line="319" selection-end-line="327" selection-end-column="32" />
+            <state relative-caret-position="1971">
+              <caret line="231" column="60" lean-forward="true" selection-start-line="231" selection-start-column="60" selection-end-line="231" selection-end-column="60" />
             </state>
           </provider>
         </entry>
@@ -75,10 +134,13 @@
       <file leaf-file-name="sparser.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/sparser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="208" column="18" selection-start-line="208" selection-start-column="18" selection-end-line="208" selection-end-column="18" />
+            <state relative-caret-position="328">
+              <caret line="206" column="19" lean-forward="true" selection-start-line="206" selection-start-column="19" selection-end-line="206" selection-end-column="19" />
               <folding>
                 <element signature="e#382#399#0" expanded="true" />
+                <element signature="e#3777#3867#0" />
+                <element signature="e#3890#3955#0" />
+                <element signature="e#4040#4091#0" />
               </folding>
             </state>
           </provider>
@@ -87,8 +149,8 @@
       <file leaf-file-name="asttypes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/asttypes.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="60" column="7" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
+            <state relative-caret-position="330">
+              <caret line="63" column="13" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
               <folding>
                 <element signature="e#23#303#1" />
               </folding>
@@ -122,17 +184,31 @@
       <find>op</find>
       <find>rest</find>
       <find>pid</find>
+      <find>wait</find>
+      <find>atomic</find>
+      <find>mandat</find>
+      <find>wnu</find>
+      <find>wnum</find>
+      <find>atomi</find>
+      <find>ename</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/indentlexer.py" />
         <option value="$PROJECT_DIR$/ast.py.old" />
-        <option value="$PROJECT_DIR$/asttypes.py" />
-        <option value="$PROJECT_DIR$/asts.py" />
-        <option value="$PROJECT_DIR$/kparser.py" />
+        <option value="$PROJECT_DIR$/parser.py.old" />
         <option value="$PROJECT_DIR$/sparser.py" />
+        <option value="$PROJECT_DIR$/asts.py" />
+        <option value="$PROJECT_DIR$/mdecls.py" />
+        <option value="$PROJECT_DIR$/mycompiler.py" />
+        <option value="$PROJECT_DIR$/kparser.py" />
+        <option value="$PROJECT_DIR$/asttypes.py" />
+        <option value="$USER_HOME$/Koord-Front-End/KoordFE/codegen.py" />
         <option value="$PROJECT_DIR$/codegen.py" />
       </list>
     </option>
@@ -152,6 +228,7 @@
     <option name="width" value="1344" />
     <option name="height" value="724" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -176,6 +253,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Koord-Front-End/KoordFE/codegen.py" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -247,12 +325,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1525322938706</updated>
-      <workItem from="1525322941731" duration="15003000" />
+      <workItem from="1525322941731" duration="21482000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15003000" />
+    <option name="totallyTimeSpent" value="21482000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-4" width="1366" height="772" extended-state="6" />
@@ -266,14 +344,14 @@
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" weight="0.32882884" />
       <window_info anchor="right" id="Maven Projects" order="5" />
       <window_info anchor="bottom" id="Database Changes" order="1" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="0" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
       <window_info anchor="bottom" id="Run" order="6" />
       <window_info anchor="bottom" id="Terminal" order="2" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="5" visible="true" weight="0.35065886" />
+      <window_info content_ui="combo" id="Project" order="5" weight="0.35065886" />
       <window_info anchor="right" id="Database" order="3" />
-      <window_info anchor="bottom" id="Find" order="5" weight="0.509009" />
+      <window_info anchor="bottom" id="Find" order="5" weight="0.5075301" />
       <window_info anchor="right" id="SciView" order="4" />
       <window_info id="Structure" order="6" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="8" weight="0.25" />
@@ -329,11 +407,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/asts.py</url>
-          <line>435</line>
+          <line>442</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/asts.py</url>
+          <line>302</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="9" />
+      <option name="time" value="14" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -347,13 +430,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
           <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mycompiler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-259">
-          <caret column="22" selection-start-column="22" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -387,13 +463,6 @@
     <entry file="file://$PROJECT_DIR$/Makefile">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/parser.py.old">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="319" selection-start-line="319" selection-end-line="327" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/ast.py.old">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -401,67 +470,134 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/asttypes.py">
+    <entry file="file://$PROJECT_DIR$/mdecls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="60" column="7" selection-start-line="60" selection-start-column="7" selection-end-line="60" selection-end-column="7" />
+        <state relative-caret-position="345">
+          <caret line="23" column="2" selection-start-line="23" selection-start-column="2" selection-end-line="23" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mycompiler.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
           <folding>
-            <element signature="e#23#303#1" />
+            <element signature="e#294#308#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/asts.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="424" column="32" selection-start-line="424" selection-start-column="32" selection-end-line="424" selection-end-column="32" />
+        <state relative-caret-position="-360">
+          <caret line="121" column="20" lean-forward="true" selection-start-line="121" selection-start-column="20" selection-end-line="121" selection-end-column="20" />
           <folding>
             <element signature="e#390#681#0" />
             <element signature="e#709#2120#0" />
             <element signature="e#2148#2607#0" />
-            <element signature="e#2283#4604#0" />
             <element signature="e#4500#4604#0" />
             <element signature="e#4633#5693#0" />
             <element signature="e#5720#6030#0" />
             <element signature="e#6062#6586#0" />
             <element signature="e#7091#7729#0" />
             <element signature="e#7002#7749#0" />
+            <element signature="e#7776#8417#0" />
             <element signature="e#7776#7811#1" />
+            <element signature="e#7871#8072#0" />
             <element signature="e#9247#10075#0" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sparser.py">
+    <entry file="file://$PROJECT_DIR$/asttypes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="208" column="18" selection-start-line="208" selection-start-column="18" selection-end-line="208" selection-end-column="18" />
+        <state relative-caret-position="330">
+          <caret line="63" column="13" selection-start-line="63" selection-start-column="13" selection-end-line="63" selection-end-column="13" />
           <folding>
-            <element signature="e#382#399#0" expanded="true" />
+            <element signature="e#23#303#1" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/kparser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1309">
-          <caret line="229" selection-start-line="229" selection-end-line="229" />
+        <state relative-caret-position="1860">
+          <caret line="321" column="31" selection-start-line="321" selection-start-column="31" selection-end-line="321" selection-end-column="31" />
           <folding>
-            <element signature="e#7038#7409#0" />
+            <element signature="e#1736#1844#0" />
+            <element signature="e#1866#1907#0" />
+            <element signature="e#1929#1989#0" />
+            <element signature="e#2010#2048#0" />
+            <element signature="e#2073#2152#0" />
+            <element signature="e#2175#2244#0" />
+            <element signature="e#2175#2230#1" />
+            <element signature="e#2269#2521#0" />
+            <element signature="e#2545#2700#0" />
+            <element signature="e#2724#2878#0" />
+            <element signature="e#2902#3047#0" />
+            <element signature="e#3070#3224#0" />
+            <element signature="e#3246#3385#0" />
+            <element signature="e#3407#3502#0" />
+            <element signature="e#3407#3488#1" />
+            <element signature="e#3523#3577#0" />
+            <element signature="e#3602#3664#0" />
+            <element signature="e#3689#3747#0" />
+            <element signature="e#3768#3823#0" />
+            <element signature="e#3768#4107#0" />
+            <element signature="e#4135#4184#0" />
+            <element signature="e#4205#4280#0" />
+            <element signature="e#4302#4377#0" />
+            <element signature="e#4404#4479#0" />
+            <element signature="e#4504#4663#0" />
+            <element signature="e#4688#4845#0" />
+            <element signature="e#4871#4966#0" />
+            <element signature="e#4993#5147#0" />
+            <element signature="e#5482#5609#0" />
+            <element signature="e#5632#5742#0" />
+            <element signature="e#5768#5924#0" />
+            <element signature="e#5946#6347#0" />
+            <element signature="e#6367#6479#0" />
+            <element signature="e#6502#6524#0" />
+            <element signature="e#6547#6643#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/parser.py.old">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1971">
+          <caret line="231" column="60" lean-forward="true" selection-start-line="231" selection-start-column="60" selection-end-line="231" selection-end-column="60" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sparser.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="206" column="19" lean-forward="true" selection-start-line="206" selection-start-column="19" selection-end-line="206" selection-end-column="19" />
+          <folding>
+            <element signature="e#382#399#0" expanded="true" />
+            <element signature="e#3777#3867#0" />
+            <element signature="e#3890#3955#0" />
+            <element signature="e#4040#4091#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Koord-Front-End/KoordFE/codegen.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="67" column="29" selection-start-line="67" selection-start-column="29" selection-end-line="67" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/codegen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-694">
-          <caret line="51" column="7" lean-forward="true" selection-start-line="51" selection-start-column="7" selection-end-line="51" selection-end-column="7" />
+        <state relative-caret-position="195">
+          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
           <folding>
-            <element signature="e#23#291#1" />
             <element signature="e#428#584#0" />
             <element signature="e#621#761#0" />
             <element signature="e#799#920#0" />
-            <element signature="e#956#1241#0" />
           </folding>
         </state>
       </provider>

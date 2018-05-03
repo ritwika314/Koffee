@@ -304,15 +304,22 @@ class AtomicAst(StmtAst):
     """
     Ast for atomic blocks
     """
-    def __init__(self, wnum, stmts):
+    def __init__(self, wn, stmts):
         """
 
         :param wnum: (int) for each atomic block, we need wait variable.
         :param stmts: (list<stmt>) the statements to be executed atomically
         """
         self.stype = ATOMICTYPE
-        self.wnum = wnum
+        self.wn = wn
         self.stmts = stmts
+
+    def get_wnum(self):
+        '''
+
+        :return: the ith atomic block returns i
+        '''
+        return self.wn
 
     def __repr__(self):
         ret_str = "atomic:"

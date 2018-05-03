@@ -154,6 +154,12 @@ and parse it.</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="kparser.p_atomic">
+<code class="descclassname">kparser.</code><code class="descname">p_atomic</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#kparser.p_atomic" title="Permalink to this definition">¶</a></dt>
+<dd><p>atomic : ATOMIC COLON NL INDENT stmts DEDENT</p>
+</dd></dl>
+
+<dl class="function">
 <dt id="kparser.p_awdecls">
 <code class="descclassname">kparser.</code><code class="descname">p_awdecls</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#kparser.p_awdecls" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="docutils">
@@ -375,7 +381,13 @@ and parse it.</p>
 <dl class="function">
 <dt id="kparser.p_stmt">
 <code class="descclassname">kparser.</code><code class="descname">p_stmt</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#kparser.p_stmt" title="Permalink to this definition">¶</a></dt>
-<dd><p>stmt : asgn</p>
+<dd><dl class="docutils">
+<dt>stmt <span class="classifier-delimiter">:</span> <span class="classifier">asgn</span></dt>
+<dd><div class="first last line-block">
+<div class="line">atomic</div>
+</div>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="function">

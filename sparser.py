@@ -133,6 +133,10 @@ def p_numbots(p):
     '''
     p[0] = ExprAst(RESTYPE, p[1])
 
+precedence = (
+    ('left', 'PLUS', 'MINUS'),
+    ('left', 'TIMES', 'BY'),
+)
 
 def p_exp(p):
     '''exp : bracketexp
@@ -192,7 +196,6 @@ def p_awdecls(p):
     else:
         p[0] = []
 
-
 def p_ardecls(p):
     '''
     ardecls : ALLREAD COLON NL INDENT decls DEDENT
@@ -205,7 +208,6 @@ def p_ardecls(p):
     else:
         p[0] = []
 
-
 def p_locdecls(p):
     '''
     locdecls : LOCAL COLON NL INDENT decls DEDENT
@@ -216,13 +218,11 @@ def p_locdecls(p):
     else:
         p[0] = []
 
-
 def p_initblock(p):
     '''initblock : INIT COLON NL INDENT stmts DEDENT
             | empty
     '''
     p[0] = []
-
 
 def p_stmts(p):
     '''
@@ -231,19 +231,22 @@ def p_stmts(p):
     '''
     p[0] = []
 
-
 def p_stmt(p):
     '''
     stmt : asgn
+         | atomic
     '''
     p[0] = []
-
 
 def p_asgn(p):
     '''asgn : varname ASGN exp NL
     '''
     p[0] = []
 
+def p_atomic(p):
+    '''atomic : ATOMIC COLON NL INDENT stmts DEDENT
+    '''
+    p[0] = []
 
 def p_events(p):
     '''events : event events
