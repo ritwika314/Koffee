@@ -60,8 +60,14 @@ public class AddnumApp extends LogicThread  {
             }
             if (mutex0.clearToEnter(0))  {
             
+               if (dsm.get("sum","*") == null) {continue;}
+               sum = Integer.parseInt(dsm.get("sum","*"));
                sum = (sum + (pid * 2));
+               dsm.put("sum","*",sum);
+               if (dsm.get("numadded","*") == null) {continue;}
+               numadded = Integer.parseInt(dsm.get("numadded","*"));
                numadded = (numadded + 1);
+               dsm.put("numadded","*",numadded);
                added = true;
                mutex0.exit(0);
                
@@ -70,8 +76,12 @@ public class AddnumApp extends LogicThread  {
             
          }
          //finalsum
+         if (dsm.get("numadded","*") == null) {continue;};
+         numadded = Integer.parseInt(dsm.get("numadded","*"));
          if ((numadded == numBots)) {
          
+            if (dsm.get("sum","*") == null) {continue;}
+            sum = Integer.parseInt(dsm.get("sum","*"));
             finalsum = sum;
             continue;
             

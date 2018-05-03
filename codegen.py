@@ -9,7 +9,7 @@ java code.
 """
 
 import generic
-from asts import is_ast
+from asts import is_ast, get_entry
 from asttypes import *
 from ic import gen_ic
 import mdecls
@@ -131,7 +131,7 @@ def ar_put_codegen(var):
     :param var: variable
     :return: put code generation for allread
     """
-    return 'dsm.put("' + str(var) + '"+name,name,' + str(var) + ');'
+    return 'dsm.put("' + str(var) + '"+name,name,' + str(var) + ');\n'
 
 
 def aw_put_codegen(var):
@@ -140,7 +140,7 @@ def aw_put_codegen(var):
     :param var: variable
     :return: put code generation for allwrite
     """
-    return 'dsm.put("' + str(var) + '","*",' + str(var) + ');'
+    return 'dsm.put("' + str(var) + '","*",' + str(var) + ');\n'
 
 
 
@@ -157,7 +157,7 @@ def checknull(var, stages=False, event=None):
     return "if (" + str(var) + " == null) {" + stmt + ";}"
 
 
-def codegen(input_ast, symtab, tabs=0, wnum=0):
+def codegen(input_ast, symtab, tabs=0, wnum=0, stages=False):
     '''
     The main code generation function. It takes as input an AST,
     and returns its corresponding java code. It is called recursively
@@ -229,9 +229,30 @@ def codegen(input_ast, symtab, tabs=0, wnum=0):
 
     elif inputast_type == EVENTTYPE:
         ename = input_ast.get_name()
-        pre_code = "//" + str(ename) + "\n"
+        vars = get_vars(input_ast.get_pre())
+        add_str = ""
+
+        for var in vars:
+            entry = get_entry(var[0], symtab)
+            if entry is None:
+                continue
+            var_scope = entry.get_scope()
+            if var_scope == ALLWRITE:
+                add_str += generic.mk_stmt(checknull(aw_get_codegen(var[0],var[1]), stages, ename))
+                cast_str = ""
+                l_br = ""
+                r_br = ""
+                if str(entry.get_dtype()) == 'int':
+                    cast_str = "Integer.parseInt"
+                    l_br = "("
+                    r_br = ")"
+                c_str = str(var[0]) + " = "+ cast_str + l_br + (aw_get_codegen(var[0], var[1])) + r_br
+                add_str += generic.mk_stmt(c_str)
+        #adding pre condition
+        pre_code = "//" + str(ename) + "\n" + add_str
         pre_code += "if (" + codegen(input_ast.get_pre(), symtab, 0, wnum) + ")"
         generated_code += generic.mk_indent(pre_code, tabs).rstrip()
+
         eff_code = ""
         for stmt in input_ast.get_eff():
             eff_code += codegen(stmt, symtab, tabs, wnum)
@@ -241,8 +262,27 @@ def codegen(input_ast, symtab, tabs=0, wnum=0):
     elif inputast_type == ASGNTYPE:
         lvar = codegen(input_ast.get_lvar(), symtab, 0, wnum)
         rexp = codegen(input_ast.get_rexp(), symtab, 0, wnum)
-        generated_code += generic.mk_stmt(lvar + " = " + rexp)
-
+        lv =  get_vars(input_ast.get_lvar())
+        rv = get_vars(input_ast.get_rexp())
+        l_scope = get_entry(lv[0][0],symtab).get_scope()
+        for var in rv:
+            v_scope = get_entry(var[0],symtab).get_scope()
+            if v_scope == ALLWRITE:
+                cast_str = ""
+                l_br = ""
+                r_br = ""
+                if str(get_entry(var[0],symtab).get_dtype()) == 'int':
+                    cast_str = "Integer.parseInt"
+                    l_br = "("
+                    r_br = ")"
+                    add_str = checknull(aw_get_codegen(var[0],symtab), stages , None)+"\n"
+                    st = generic.mk_stmt(str(var[0])+ " = " + cast_str + l_br + (aw_get_codegen(var[0],symtab)) + r_br)
+                    add_str += st
+                    generated_code += add_str
+        generated_code +=  generic.mk_stmt(lvar + " = " + rexp)
+        if l_scope == ALLWRITE:
+            generated_code += aw_put_codegen(input_ast.get_lvar())
+            
     elif inputast_type == NUMTYPE:
         generated_code += str(input_ast)
 

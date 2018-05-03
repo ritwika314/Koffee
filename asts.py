@@ -485,3 +485,15 @@ class EventAst(list):
         :return: list of effect statements
         """
         return self.eff
+
+def get_entry(varname, decls):
+    """
+
+    :param varname: variable
+    :param decls: list of declarations (symtab)
+    :return: the declaration corresponding to variable
+    """
+    for decl in decls:
+        if str(decl.get_varname()) == varname :
+            return decl
+    return None
