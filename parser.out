@@ -1,0 +1,2618 @@
+Created by PLY version 3.9 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    QUEUE
+    LCURLY
+    WS
+    FUN
+    LANGLE
+    SEMICOLON
+    RCURLY
+    RBRACE
+    RANGLE
+    ELSE
+    IF
+    MAP
+    LBRACE
+    LIST
+    TYPE
+    ATOMIC
+
+Grammar
+
+Rule 0     S' -> pgm
+Rule 1     pgm -> agnt defs modules declblock initblock events
+Rule 2     agnt -> AGENT CID NL
+Rule 3     defs -> def defs
+Rule 4     defs -> empty
+Rule 5     def -> enumdef
+Rule 6     enumdef -> DEF ENUM CID COLON NL INDENT names NL DEDENT
+Rule 7     names -> names COMMA LID
+Rule 8     names -> LID
+Rule 9     modules -> module modules
+Rule 10    modules -> empty
+Rule 11    module -> MODULE CID COLON NL INDENT adecls sdecls DEDENT
+Rule 12    adecls -> ACTUATORS COLON NL INDENT decls DEDENT
+Rule 13    adecls -> empty
+Rule 14    sdecls -> SENSORS COLON NL INDENT decls DEDENT
+Rule 15    sdecls -> empty
+Rule 16    decls -> decl decls
+Rule 17    decls -> empty
+Rule 18    decl -> type varname ASGN exp NL
+Rule 19    decl -> type varname NL
+Rule 20    type -> INT
+Rule 21    type -> FLOAT
+Rule 22    type -> POS
+Rule 23    type -> BOOLEAN
+Rule 24    pid -> PID
+Rule 25    varname -> LID
+Rule 26    numbots -> NUMBOTS
+Rule 27    exp -> bracketexp
+Rule 28    exp -> exp PLUS exp
+Rule 29    exp -> exp TIMES exp
+Rule 30    exp -> exp MINUS exp
+Rule 31    exp -> exp BY exp
+Rule 32    exp -> varname
+Rule 33    exp -> num
+Rule 34    exp -> bval
+Rule 35    exp -> pid
+Rule 36    exp -> numbots
+Rule 37    bracketexp -> LPAR exp RPAR
+Rule 38    num -> INUM
+Rule 39    num -> FNUM
+Rule 40    bval -> TRUE
+Rule 41    bval -> FALSE
+Rule 42    declblock -> awdecls ardecls locdecls
+Rule 43    awdecls -> ALLWRITE COLON NL INDENT decls DEDENT
+Rule 44    awdecls -> empty
+Rule 45    ardecls -> ALLREAD COLON NL INDENT decls DEDENT
+Rule 46    ardecls -> empty
+Rule 47    locdecls -> LOCAL COLON NL INDENT decls DEDENT
+Rule 48    locdecls -> empty
+Rule 49    initblock -> INIT COLON NL INDENT stmts DEDENT
+Rule 50    initblock -> empty
+Rule 51    stmts -> stmt stmts
+Rule 52    stmts -> stmt
+Rule 53    stmt -> asgn
+Rule 54    asgn -> varname ASGN exp NL
+Rule 55    events -> event events
+Rule 56    events -> event
+Rule 57    event -> LID COLON NL INDENT PRE COLON cond NL effblock DEDENT
+Rule 58    effblock -> EFF COLON NL INDENT stmts DEDENT
+Rule 59    effblock -> EFF COLON stmt
+Rule 60    cond -> LPAR cond AND cond RPAR
+Rule 61    cond -> LPAR cond OR cond RPAR
+Rule 62    cond -> LPAR cond op cond RPAR
+Rule 63    cond -> LPAR NOT cond RPAR
+Rule 64    cond -> exp
+Rule 65    op -> EQ
+Rule 66    op -> NEQ
+Rule 67    op -> GEQ
+Rule 68    op -> LEQ
+Rule 69    op -> GT
+Rule 70    op -> LT
+Rule 71    empty -> <empty>
+
+Terminals, with rules where they appear
+
+ACTUATORS            : 12
+AGENT                : 2
+ALLREAD              : 45
+ALLWRITE             : 43
+AND                  : 60
+ASGN                 : 18 54
+ATOMIC               : 
+BOOLEAN              : 23
+BY                   : 31
+CID                  : 2 6 11
+COLON                : 6 11 12 14 43 45 47 49 57 57 58 59
+COMMA                : 7
+DEDENT               : 6 11 12 14 43 45 47 49 57 58
+DEF                  : 6
+EFF                  : 58 59
+ELSE                 : 
+ENUM                 : 6
+EQ                   : 65
+FALSE                : 41
+FLOAT                : 21
+FNUM                 : 39
+FUN                  : 
+GEQ                  : 67
+GT                   : 69
+IF                   : 
+INDENT               : 6 11 12 14 43 45 47 49 57 58
+INIT                 : 49
+INT                  : 20
+INUM                 : 38
+LANGLE               : 
+LBRACE               : 
+LCURLY               : 
+LEQ                  : 68
+LID                  : 7 8 25 57
+LIST                 : 
+LOCAL                : 47
+LPAR                 : 37 60 61 62 63
+LT                   : 70
+MAP                  : 
+MINUS                : 30
+MODULE               : 11
+NEQ                  : 66
+NL                   : 2 6 6 11 12 14 18 19 43 45 47 49 54 57 57 58
+NOT                  : 63
+NUMBOTS              : 26
+OR                   : 61
+PID                  : 24
+PLUS                 : 28
+POS                  : 22
+PRE                  : 57
+QUEUE                : 
+RANGLE               : 
+RBRACE               : 
+RCURLY               : 
+RPAR                 : 37 60 61 62 63
+SEMICOLON            : 
+SENSORS              : 14
+TIMES                : 29
+TRUE                 : 40
+TYPE                 : 
+WS                   : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+adecls               : 11
+agnt                 : 1
+ardecls              : 42
+asgn                 : 53
+awdecls              : 42
+bracketexp           : 27
+bval                 : 34
+cond                 : 57 60 60 61 61 62 62 63
+decl                 : 16
+declblock            : 1
+decls                : 12 14 16 43 45 47
+def                  : 3
+defs                 : 1 3
+effblock             : 57
+empty                : 4 10 13 15 17 44 46 48 50
+enumdef              : 5
+event                : 55 56
+events               : 1 55
+exp                  : 18 28 28 29 29 30 30 31 31 37 54 64
+initblock            : 1
+locdecls             : 42
+module               : 9
+modules              : 1 9
+names                : 6 7
+num                  : 33
+numbots              : 36
+op                   : 62
+pgm                  : 0
+pid                  : 35
+sdecls               : 11
+stmt                 : 51 52 59
+stmts                : 49 51 58
+type                 : 18 19
+varname              : 18 19 32 54
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . pgm
+    (1) pgm -> . agnt defs modules declblock initblock events
+    (2) agnt -> . AGENT CID NL
+
+    AGENT           shift and go to state 2
+
+    pgm                            shift and go to state 1
+    agnt                           shift and go to state 3
+
+state 1
+
+    (0) S' -> pgm .
+
+
+
+state 2
+
+    (2) agnt -> AGENT . CID NL
+
+    CID             shift and go to state 4
+
+
+state 3
+
+    (1) pgm -> agnt . defs modules declblock initblock events
+    (3) defs -> . def defs
+    (4) defs -> . empty
+    (5) def -> . enumdef
+    (71) empty -> .
+    (6) enumdef -> . DEF ENUM CID COLON NL INDENT names NL DEDENT
+
+    MODULE          reduce using rule 71 (empty -> .)
+    ALLWRITE        reduce using rule 71 (empty -> .)
+    INIT            reduce using rule 71 (empty -> .)
+    LID             reduce using rule 71 (empty -> .)
+    ALLREAD         reduce using rule 71 (empty -> .)
+    LOCAL           reduce using rule 71 (empty -> .)
+    DEF             shift and go to state 9
+
+    defs                           shift and go to state 5
+    empty                          shift and go to state 6
+    def                            shift and go to state 7
+    enumdef                        shift and go to state 8
+
+state 4
+
+    (2) agnt -> AGENT CID . NL
+
+    NL              shift and go to state 10
+
+
+state 5
+
+    (1) pgm -> agnt defs . modules declblock initblock events
+    (9) modules -> . module modules
+    (10) modules -> . empty
+    (11) module -> . MODULE CID COLON NL INDENT adecls sdecls DEDENT
+    (71) empty -> .
+
+    MODULE          shift and go to state 11
+    ALLWRITE        reduce using rule 71 (empty -> .)
+    INIT            reduce using rule 71 (empty -> .)
+    LID             reduce using rule 71 (empty -> .)
+    ALLREAD         reduce using rule 71 (empty -> .)
+    LOCAL           reduce using rule 71 (empty -> .)
+
+    modules                        shift and go to state 12
+    module                         shift and go to state 13
+    empty                          shift and go to state 14
+
+state 6
+
+    (4) defs -> empty .
+
+    MODULE          reduce using rule 4 (defs -> empty .)
+    ALLWRITE        reduce using rule 4 (defs -> empty .)
+    INIT            reduce using rule 4 (defs -> empty .)
+    LID             reduce using rule 4 (defs -> empty .)
+    ALLREAD         reduce using rule 4 (defs -> empty .)
+    LOCAL           reduce using rule 4 (defs -> empty .)
+
+
+state 7
+
+    (3) defs -> def . defs
+    (3) defs -> . def defs
+    (4) defs -> . empty
+    (5) def -> . enumdef
+    (71) empty -> .
+    (6) enumdef -> . DEF ENUM CID COLON NL INDENT names NL DEDENT
+
+    MODULE          reduce using rule 71 (empty -> .)
+    ALLWRITE        reduce using rule 71 (empty -> .)
+    INIT            reduce using rule 71 (empty -> .)
+    LID             reduce using rule 71 (empty -> .)
+    ALLREAD         reduce using rule 71 (empty -> .)
+    LOCAL           reduce using rule 71 (empty -> .)
+    DEF             shift and go to state 9
+
+    defs                           shift and go to state 15
+    enumdef                        shift and go to state 8
+    empty                          shift and go to state 6
+    def                            shift and go to state 7
+
+state 8
+
+    (5) def -> enumdef .
+
+    DEF             reduce using rule 5 (def -> enumdef .)
+    MODULE          reduce using rule 5 (def -> enumdef .)
+    ALLWRITE        reduce using rule 5 (def -> enumdef .)
+    INIT            reduce using rule 5 (def -> enumdef .)
+    LID             reduce using rule 5 (def -> enumdef .)
+    ALLREAD         reduce using rule 5 (def -> enumdef .)
+    LOCAL           reduce using rule 5 (def -> enumdef .)
+
+
+state 9
+
+    (6) enumdef -> DEF . ENUM CID COLON NL INDENT names NL DEDENT
+
+    ENUM            shift and go to state 16
+
+
+state 10
+
+    (2) agnt -> AGENT CID NL .
+
+    DEF             reduce using rule 2 (agnt -> AGENT CID NL .)
+    MODULE          reduce using rule 2 (agnt -> AGENT CID NL .)
+    ALLWRITE        reduce using rule 2 (agnt -> AGENT CID NL .)
+    INIT            reduce using rule 2 (agnt -> AGENT CID NL .)
+    LID             reduce using rule 2 (agnt -> AGENT CID NL .)
+    ALLREAD         reduce using rule 2 (agnt -> AGENT CID NL .)
+    LOCAL           reduce using rule 2 (agnt -> AGENT CID NL .)
+
+
+state 11
+
+    (11) module -> MODULE . CID COLON NL INDENT adecls sdecls DEDENT
+
+    CID             shift and go to state 17
+
+
+state 12
+
+    (1) pgm -> agnt defs modules . declblock initblock events
+    (42) declblock -> . awdecls ardecls locdecls
+    (43) awdecls -> . ALLWRITE COLON NL INDENT decls DEDENT
+    (44) awdecls -> . empty
+    (71) empty -> .
+
+    ALLWRITE        shift and go to state 20
+    ALLREAD         reduce using rule 71 (empty -> .)
+    LOCAL           reduce using rule 71 (empty -> .)
+    INIT            reduce using rule 71 (empty -> .)
+    LID             reduce using rule 71 (empty -> .)
+
+    awdecls                        shift and go to state 19
+    empty                          shift and go to state 18
+    declblock                      shift and go to state 21
+
+state 13
+
+    (9) modules -> module . modules
+    (9) modules -> . module modules
+    (10) modules -> . empty
+    (11) module -> . MODULE CID COLON NL INDENT adecls sdecls DEDENT
+    (71) empty -> .
+
+    MODULE          shift and go to state 11
+    ALLWRITE        reduce using rule 71 (empty -> .)
+    INIT            reduce using rule 71 (empty -> .)
+    LID             reduce using rule 71 (empty -> .)
+    ALLREAD         reduce using rule 71 (empty -> .)
+    LOCAL           reduce using rule 71 (empty -> .)
+
+    modules                        shift and go to state 22
+    empty                          shift and go to state 14
+    module                         shift and go to state 13
+
+state 14
+
+    (10) modules -> empty .
+
+    ALLWRITE        reduce using rule 10 (modules -> empty .)
+    INIT            reduce using rule 10 (modules -> empty .)
+    LID             reduce using rule 10 (modules -> empty .)
+    ALLREAD         reduce using rule 10 (modules -> empty .)
+    LOCAL           reduce using rule 10 (modules -> empty .)
+
+
+state 15
+
+    (3) defs -> def defs .
+
+    MODULE          reduce using rule 3 (defs -> def defs .)
+    ALLWRITE        reduce using rule 3 (defs -> def defs .)
+    INIT            reduce using rule 3 (defs -> def defs .)
+    LID             reduce using rule 3 (defs -> def defs .)
+    ALLREAD         reduce using rule 3 (defs -> def defs .)
+    LOCAL           reduce using rule 3 (defs -> def defs .)
+
+
+state 16
+
+    (6) enumdef -> DEF ENUM . CID COLON NL INDENT names NL DEDENT
+
+    CID             shift and go to state 23
+
+
+state 17
+
+    (11) module -> MODULE CID . COLON NL INDENT adecls sdecls DEDENT
+
+    COLON           shift and go to state 24
+
+
+state 18
+
+    (44) awdecls -> empty .
+
+    ALLREAD         reduce using rule 44 (awdecls -> empty .)
+    LOCAL           reduce using rule 44 (awdecls -> empty .)
+    INIT            reduce using rule 44 (awdecls -> empty .)
+    LID             reduce using rule 44 (awdecls -> empty .)
+
+
+state 19
+
+    (42) declblock -> awdecls . ardecls locdecls
+    (45) ardecls -> . ALLREAD COLON NL INDENT decls DEDENT
+    (46) ardecls -> . empty
+    (71) empty -> .
+
+    ALLREAD         shift and go to state 25
+    LOCAL           reduce using rule 71 (empty -> .)
+    INIT            reduce using rule 71 (empty -> .)
+    LID             reduce using rule 71 (empty -> .)
+
+    ardecls                        shift and go to state 26
+    empty                          shift and go to state 27
+
+state 20
+
+    (43) awdecls -> ALLWRITE . COLON NL INDENT decls DEDENT
+
+    COLON           shift and go to state 28
+
+
+state 21
+
+    (1) pgm -> agnt defs modules declblock . initblock events
+    (49) initblock -> . INIT COLON NL INDENT stmts DEDENT
+    (50) initblock -> . empty
+    (71) empty -> .
+
+    INIT            shift and go to state 30
+    LID             reduce using rule 71 (empty -> .)
+
+    initblock                      shift and go to state 29
+    empty                          shift and go to state 31
+
+state 22
+
+    (9) modules -> module modules .
+
+    ALLWRITE        reduce using rule 9 (modules -> module modules .)
+    INIT            reduce using rule 9 (modules -> module modules .)
+    LID             reduce using rule 9 (modules -> module modules .)
+    ALLREAD         reduce using rule 9 (modules -> module modules .)
+    LOCAL           reduce using rule 9 (modules -> module modules .)
+
+
+state 23
+
+    (6) enumdef -> DEF ENUM CID . COLON NL INDENT names NL DEDENT
+
+    COLON           shift and go to state 32
+
+
+state 24
+
+    (11) module -> MODULE CID COLON . NL INDENT adecls sdecls DEDENT
+
+    NL              shift and go to state 33
+
+
+state 25
+
+    (45) ardecls -> ALLREAD . COLON NL INDENT decls DEDENT
+
+    COLON           shift and go to state 34
+
+
+state 26
+
+    (42) declblock -> awdecls ardecls . locdecls
+    (47) locdecls -> . LOCAL COLON NL INDENT decls DEDENT
+    (48) locdecls -> . empty
+    (71) empty -> .
+
+    LOCAL           shift and go to state 36
+    INIT            reduce using rule 71 (empty -> .)
+    LID             reduce using rule 71 (empty -> .)
+
+    locdecls                       shift and go to state 35
+    empty                          shift and go to state 37
+
+state 27
+
+    (46) ardecls -> empty .
+
+    LOCAL           reduce using rule 46 (ardecls -> empty .)
+    INIT            reduce using rule 46 (ardecls -> empty .)
+    LID             reduce using rule 46 (ardecls -> empty .)
+
+
+state 28
+
+    (43) awdecls -> ALLWRITE COLON . NL INDENT decls DEDENT
+
+    NL              shift and go to state 38
+
+
+state 29
+
+    (1) pgm -> agnt defs modules declblock initblock . events
+    (55) events -> . event events
+    (56) events -> . event
+    (57) event -> . LID COLON NL INDENT PRE COLON cond NL effblock DEDENT
+
+    LID             shift and go to state 39
+
+    event                          shift and go to state 40
+    events                         shift and go to state 41
+
+state 30
+
+    (49) initblock -> INIT . COLON NL INDENT stmts DEDENT
+
+    COLON           shift and go to state 42
+
+
+state 31
+
+    (50) initblock -> empty .
+
+    LID             reduce using rule 50 (initblock -> empty .)
+
+
+state 32
+
+    (6) enumdef -> DEF ENUM CID COLON . NL INDENT names NL DEDENT
+
+    NL              shift and go to state 43
+
+
+state 33
+
+    (11) module -> MODULE CID COLON NL . INDENT adecls sdecls DEDENT
+
+    INDENT          shift and go to state 44
+
+
+state 34
+
+    (45) ardecls -> ALLREAD COLON . NL INDENT decls DEDENT
+
+    NL              shift and go to state 45
+
+
+state 35
+
+    (42) declblock -> awdecls ardecls locdecls .
+
+    INIT            reduce using rule 42 (declblock -> awdecls ardecls locdecls .)
+    LID             reduce using rule 42 (declblock -> awdecls ardecls locdecls .)
+
+
+state 36
+
+    (47) locdecls -> LOCAL . COLON NL INDENT decls DEDENT
+
+    COLON           shift and go to state 46
+
+
+state 37
+
+    (48) locdecls -> empty .
+
+    INIT            reduce using rule 48 (locdecls -> empty .)
+    LID             reduce using rule 48 (locdecls -> empty .)
+
+
+state 38
+
+    (43) awdecls -> ALLWRITE COLON NL . INDENT decls DEDENT
+
+    INDENT          shift and go to state 47
+
+
+state 39
+
+    (57) event -> LID . COLON NL INDENT PRE COLON cond NL effblock DEDENT
+
+    COLON           shift and go to state 48
+
+
+state 40
+
+    (55) events -> event . events
+    (56) events -> event .
+    (55) events -> . event events
+    (56) events -> . event
+    (57) event -> . LID COLON NL INDENT PRE COLON cond NL effblock DEDENT
+
+    $end            reduce using rule 56 (events -> event .)
+    LID             shift and go to state 39
+
+    event                          shift and go to state 40
+    events                         shift and go to state 49
+
+state 41
+
+    (1) pgm -> agnt defs modules declblock initblock events .
+
+    $end            reduce using rule 1 (pgm -> agnt defs modules declblock initblock events .)
+
+
+state 42
+
+    (49) initblock -> INIT COLON . NL INDENT stmts DEDENT
+
+    NL              shift and go to state 50
+
+
+state 43
+
+    (6) enumdef -> DEF ENUM CID COLON NL . INDENT names NL DEDENT
+
+    INDENT          shift and go to state 51
+
+
+state 44
+
+    (11) module -> MODULE CID COLON NL INDENT . adecls sdecls DEDENT
+    (12) adecls -> . ACTUATORS COLON NL INDENT decls DEDENT
+    (13) adecls -> . empty
+    (71) empty -> .
+
+    ACTUATORS       shift and go to state 52
+    SENSORS         reduce using rule 71 (empty -> .)
+    DEDENT          reduce using rule 71 (empty -> .)
+
+    adecls                         shift and go to state 53
+    empty                          shift and go to state 54
+
+state 45
+
+    (45) ardecls -> ALLREAD COLON NL . INDENT decls DEDENT
+
+    INDENT          shift and go to state 55
+
+
+state 46
+
+    (47) locdecls -> LOCAL COLON . NL INDENT decls DEDENT
+
+    NL              shift and go to state 56
+
+
+state 47
+
+    (43) awdecls -> ALLWRITE COLON NL INDENT . decls DEDENT
+    (16) decls -> . decl decls
+    (17) decls -> . empty
+    (18) decl -> . type varname ASGN exp NL
+    (19) decl -> . type varname NL
+    (71) empty -> .
+    (20) type -> . INT
+    (21) type -> . FLOAT
+    (22) type -> . POS
+    (23) type -> . BOOLEAN
+
+    DEDENT          reduce using rule 71 (empty -> .)
+    INT             shift and go to state 58
+    FLOAT           shift and go to state 59
+    POS             shift and go to state 60
+    BOOLEAN         shift and go to state 61
+
+    decl                           shift and go to state 57
+    decls                          shift and go to state 63
+    type                           shift and go to state 62
+    empty                          shift and go to state 64
+
+state 48
+
+    (57) event -> LID COLON . NL INDENT PRE COLON cond NL effblock DEDENT
+
+    NL              shift and go to state 65
+
+
+state 49
+
+    (55) events -> event events .
+
+    $end            reduce using rule 55 (events -> event events .)
+
+
+state 50
+
+    (49) initblock -> INIT COLON NL . INDENT stmts DEDENT
+
+    INDENT          shift and go to state 66
+
+
+state 51
+
+    (6) enumdef -> DEF ENUM CID COLON NL INDENT . names NL DEDENT
+    (7) names -> . names COMMA LID
+    (8) names -> . LID
+
+    LID             shift and go to state 67
+
+    names                          shift and go to state 68
+
+state 52
+
+    (12) adecls -> ACTUATORS . COLON NL INDENT decls DEDENT
+
+    COLON           shift and go to state 69
+
+
+state 53
+
+    (11) module -> MODULE CID COLON NL INDENT adecls . sdecls DEDENT
+    (14) sdecls -> . SENSORS COLON NL INDENT decls DEDENT
+    (15) sdecls -> . empty
+    (71) empty -> .
+
+    SENSORS         shift and go to state 71
+    DEDENT          reduce using rule 71 (empty -> .)
+
+    sdecls                         shift and go to state 70
+    empty                          shift and go to state 72
+
+state 54
+
+    (13) adecls -> empty .
+
+    SENSORS         reduce using rule 13 (adecls -> empty .)
+    DEDENT          reduce using rule 13 (adecls -> empty .)
+
+
+state 55
+
+    (45) ardecls -> ALLREAD COLON NL INDENT . decls DEDENT
+    (16) decls -> . decl decls
+    (17) decls -> . empty
+    (18) decl -> . type varname ASGN exp NL
+    (19) decl -> . type varname NL
+    (71) empty -> .
+    (20) type -> . INT
+    (21) type -> . FLOAT
+    (22) type -> . POS
+    (23) type -> . BOOLEAN
+
+    DEDENT          reduce using rule 71 (empty -> .)
+    INT             shift and go to state 58
+    FLOAT           shift and go to state 59
+    POS             shift and go to state 60
+    BOOLEAN         shift and go to state 61
+
+    decl                           shift and go to state 57
+    decls                          shift and go to state 73
+    type                           shift and go to state 62
+    empty                          shift and go to state 64
+
+state 56
+
+    (47) locdecls -> LOCAL COLON NL . INDENT decls DEDENT
+
+    INDENT          shift and go to state 74
+
+
+state 57
+
+    (16) decls -> decl . decls
+    (16) decls -> . decl decls
+    (17) decls -> . empty
+    (18) decl -> . type varname ASGN exp NL
+    (19) decl -> . type varname NL
+    (71) empty -> .
+    (20) type -> . INT
+    (21) type -> . FLOAT
+    (22) type -> . POS
+    (23) type -> . BOOLEAN
+
+    DEDENT          reduce using rule 71 (empty -> .)
+    INT             shift and go to state 58
+    FLOAT           shift and go to state 59
+    POS             shift and go to state 60
+    BOOLEAN         shift and go to state 61
+
+    decl                           shift and go to state 57
+    decls                          shift and go to state 75
+    type                           shift and go to state 62
+    empty                          shift and go to state 64
+
+state 58
+
+    (20) type -> INT .
+
+    LID             reduce using rule 20 (type -> INT .)
+
+
+state 59
+
+    (21) type -> FLOAT .
+
+    LID             reduce using rule 21 (type -> FLOAT .)
+
+
+state 60
+
+    (22) type -> POS .
+
+    LID             reduce using rule 22 (type -> POS .)
+
+
+state 61
+
+    (23) type -> BOOLEAN .
+
+    LID             reduce using rule 23 (type -> BOOLEAN .)
+
+
+state 62
+
+    (18) decl -> type . varname ASGN exp NL
+    (19) decl -> type . varname NL
+    (25) varname -> . LID
+
+    LID             shift and go to state 76
+
+    varname                        shift and go to state 77
+
+state 63
+
+    (43) awdecls -> ALLWRITE COLON NL INDENT decls . DEDENT
+
+    DEDENT          shift and go to state 78
+
+
+state 64
+
+    (17) decls -> empty .
+
+    DEDENT          reduce using rule 17 (decls -> empty .)
+
+
+state 65
+
+    (57) event -> LID COLON NL . INDENT PRE COLON cond NL effblock DEDENT
+
+    INDENT          shift and go to state 79
+
+
+state 66
+
+    (49) initblock -> INIT COLON NL INDENT . stmts DEDENT
+    (51) stmts -> . stmt stmts
+    (52) stmts -> . stmt
+    (53) stmt -> . asgn
+    (54) asgn -> . varname ASGN exp NL
+    (25) varname -> . LID
+
+    LID             shift and go to state 76
+
+    stmts                          shift and go to state 80
+    varname                        shift and go to state 81
+    stmt                           shift and go to state 82
+    asgn                           shift and go to state 83
+
+state 67
+
+    (8) names -> LID .
+
+    NL              reduce using rule 8 (names -> LID .)
+    COMMA           reduce using rule 8 (names -> LID .)
+
+
+state 68
+
+    (6) enumdef -> DEF ENUM CID COLON NL INDENT names . NL DEDENT
+    (7) names -> names . COMMA LID
+
+    NL              shift and go to state 84
+    COMMA           shift and go to state 85
+
+
+state 69
+
+    (12) adecls -> ACTUATORS COLON . NL INDENT decls DEDENT
+
+    NL              shift and go to state 86
+
+
+state 70
+
+    (11) module -> MODULE CID COLON NL INDENT adecls sdecls . DEDENT
+
+    DEDENT          shift and go to state 87
+
+
+state 71
+
+    (14) sdecls -> SENSORS . COLON NL INDENT decls DEDENT
+
+    COLON           shift and go to state 88
+
+
+state 72
+
+    (15) sdecls -> empty .
+
+    DEDENT          reduce using rule 15 (sdecls -> empty .)
+
+
+state 73
+
+    (45) ardecls -> ALLREAD COLON NL INDENT decls . DEDENT
+
+    DEDENT          shift and go to state 89
+
+
+state 74
+
+    (47) locdecls -> LOCAL COLON NL INDENT . decls DEDENT
+    (16) decls -> . decl decls
+    (17) decls -> . empty
+    (18) decl -> . type varname ASGN exp NL
+    (19) decl -> . type varname NL
+    (71) empty -> .
+    (20) type -> . INT
+    (21) type -> . FLOAT
+    (22) type -> . POS
+    (23) type -> . BOOLEAN
+
+    DEDENT          reduce using rule 71 (empty -> .)
+    INT             shift and go to state 58
+    FLOAT           shift and go to state 59
+    POS             shift and go to state 60
+    BOOLEAN         shift and go to state 61
+
+    decl                           shift and go to state 57
+    decls                          shift and go to state 90
+    type                           shift and go to state 62
+    empty                          shift and go to state 64
+
+state 75
+
+    (16) decls -> decl decls .
+
+    DEDENT          reduce using rule 16 (decls -> decl decls .)
+
+
+state 76
+
+    (25) varname -> LID .
+
+    ASGN            reduce using rule 25 (varname -> LID .)
+    PLUS            reduce using rule 25 (varname -> LID .)
+    TIMES           reduce using rule 25 (varname -> LID .)
+    MINUS           reduce using rule 25 (varname -> LID .)
+    BY              reduce using rule 25 (varname -> LID .)
+    RPAR            reduce using rule 25 (varname -> LID .)
+    NL              reduce using rule 25 (varname -> LID .)
+    AND             reduce using rule 25 (varname -> LID .)
+    OR              reduce using rule 25 (varname -> LID .)
+    EQ              reduce using rule 25 (varname -> LID .)
+    NEQ             reduce using rule 25 (varname -> LID .)
+    GEQ             reduce using rule 25 (varname -> LID .)
+    LEQ             reduce using rule 25 (varname -> LID .)
+    GT              reduce using rule 25 (varname -> LID .)
+    LT              reduce using rule 25 (varname -> LID .)
+
+
+state 77
+
+    (18) decl -> type varname . ASGN exp NL
+    (19) decl -> type varname . NL
+
+    ASGN            shift and go to state 92
+    NL              shift and go to state 91
+
+
+state 78
+
+    (43) awdecls -> ALLWRITE COLON NL INDENT decls DEDENT .
+
+    ALLREAD         reduce using rule 43 (awdecls -> ALLWRITE COLON NL INDENT decls DEDENT .)
+    LOCAL           reduce using rule 43 (awdecls -> ALLWRITE COLON NL INDENT decls DEDENT .)
+    INIT            reduce using rule 43 (awdecls -> ALLWRITE COLON NL INDENT decls DEDENT .)
+    LID             reduce using rule 43 (awdecls -> ALLWRITE COLON NL INDENT decls DEDENT .)
+
+
+state 79
+
+    (57) event -> LID COLON NL INDENT . PRE COLON cond NL effblock DEDENT
+
+    PRE             shift and go to state 93
+
+
+state 80
+
+    (49) initblock -> INIT COLON NL INDENT stmts . DEDENT
+
+    DEDENT          shift and go to state 94
+
+
+state 81
+
+    (54) asgn -> varname . ASGN exp NL
+
+    ASGN            shift and go to state 95
+
+
+state 82
+
+    (51) stmts -> stmt . stmts
+    (52) stmts -> stmt .
+    (51) stmts -> . stmt stmts
+    (52) stmts -> . stmt
+    (53) stmt -> . asgn
+    (54) asgn -> . varname ASGN exp NL
+    (25) varname -> . LID
+
+    DEDENT          reduce using rule 52 (stmts -> stmt .)
+    LID             shift and go to state 76
+
+    stmts                          shift and go to state 96
+    varname                        shift and go to state 81
+    stmt                           shift and go to state 82
+    asgn                           shift and go to state 83
+
+state 83
+
+    (53) stmt -> asgn .
+
+    LID             reduce using rule 53 (stmt -> asgn .)
+    DEDENT          reduce using rule 53 (stmt -> asgn .)
+
+
+state 84
+
+    (6) enumdef -> DEF ENUM CID COLON NL INDENT names NL . DEDENT
+
+    DEDENT          shift and go to state 97
+
+
+state 85
+
+    (7) names -> names COMMA . LID
+
+    LID             shift and go to state 98
+
+
+state 86
+
+    (12) adecls -> ACTUATORS COLON NL . INDENT decls DEDENT
+
+    INDENT          shift and go to state 99
+
+
+state 87
+
+    (11) module -> MODULE CID COLON NL INDENT adecls sdecls DEDENT .
+
+    MODULE          reduce using rule 11 (module -> MODULE CID COLON NL INDENT adecls sdecls DEDENT .)
+    ALLWRITE        reduce using rule 11 (module -> MODULE CID COLON NL INDENT adecls sdecls DEDENT .)
+    INIT            reduce using rule 11 (module -> MODULE CID COLON NL INDENT adecls sdecls DEDENT .)
+    LID             reduce using rule 11 (module -> MODULE CID COLON NL INDENT adecls sdecls DEDENT .)
+    ALLREAD         reduce using rule 11 (module -> MODULE CID COLON NL INDENT adecls sdecls DEDENT .)
+    LOCAL           reduce using rule 11 (module -> MODULE CID COLON NL INDENT adecls sdecls DEDENT .)
+
+
+state 88
+
+    (14) sdecls -> SENSORS COLON . NL INDENT decls DEDENT
+
+    NL              shift and go to state 100
+
+
+state 89
+
+    (45) ardecls -> ALLREAD COLON NL INDENT decls DEDENT .
+
+    LOCAL           reduce using rule 45 (ardecls -> ALLREAD COLON NL INDENT decls DEDENT .)
+    INIT            reduce using rule 45 (ardecls -> ALLREAD COLON NL INDENT decls DEDENT .)
+    LID             reduce using rule 45 (ardecls -> ALLREAD COLON NL INDENT decls DEDENT .)
+
+
+state 90
+
+    (47) locdecls -> LOCAL COLON NL INDENT decls . DEDENT
+
+    DEDENT          shift and go to state 101
+
+
+state 91
+
+    (19) decl -> type varname NL .
+
+    INT             reduce using rule 19 (decl -> type varname NL .)
+    FLOAT           reduce using rule 19 (decl -> type varname NL .)
+    POS             reduce using rule 19 (decl -> type varname NL .)
+    BOOLEAN         reduce using rule 19 (decl -> type varname NL .)
+    DEDENT          reduce using rule 19 (decl -> type varname NL .)
+
+
+state 92
+
+    (18) decl -> type varname ASGN . exp NL
+    (27) exp -> . bracketexp
+    (28) exp -> . exp PLUS exp
+    (29) exp -> . exp TIMES exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp BY exp
+    (32) exp -> . varname
+    (33) exp -> . num
+    (34) exp -> . bval
+    (35) exp -> . pid
+    (36) exp -> . numbots
+    (37) bracketexp -> . LPAR exp RPAR
+    (25) varname -> . LID
+    (38) num -> . INUM
+    (39) num -> . FNUM
+    (40) bval -> . TRUE
+    (41) bval -> . FALSE
+    (24) pid -> . PID
+    (26) numbots -> . NUMBOTS
+
+    LPAR            shift and go to state 102
+    LID             shift and go to state 76
+    INUM            shift and go to state 115
+    FNUM            shift and go to state 104
+    TRUE            shift and go to state 108
+    FALSE           shift and go to state 112
+    PID             shift and go to state 109
+    NUMBOTS         shift and go to state 110
+
+    bracketexp                     shift and go to state 103
+    varname                        shift and go to state 113
+    pid                            shift and go to state 105
+    num                            shift and go to state 106
+    exp                            shift and go to state 114
+    numbots                        shift and go to state 111
+    bval                           shift and go to state 107
+
+state 93
+
+    (57) event -> LID COLON NL INDENT PRE . COLON cond NL effblock DEDENT
+
+    COLON           shift and go to state 116
+
+
+state 94
+
+    (49) initblock -> INIT COLON NL INDENT stmts DEDENT .
+
+    LID             reduce using rule 49 (initblock -> INIT COLON NL INDENT stmts DEDENT .)
+
+
+state 95
+
+    (54) asgn -> varname ASGN . exp NL
+    (27) exp -> . bracketexp
+    (28) exp -> . exp PLUS exp
+    (29) exp -> . exp TIMES exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp BY exp
+    (32) exp -> . varname
+    (33) exp -> . num
+    (34) exp -> . bval
+    (35) exp -> . pid
+    (36) exp -> . numbots
+    (37) bracketexp -> . LPAR exp RPAR
+    (25) varname -> . LID
+    (38) num -> . INUM
+    (39) num -> . FNUM
+    (40) bval -> . TRUE
+    (41) bval -> . FALSE
+    (24) pid -> . PID
+    (26) numbots -> . NUMBOTS
+
+    LPAR            shift and go to state 102
+    LID             shift and go to state 76
+    INUM            shift and go to state 115
+    FNUM            shift and go to state 104
+    TRUE            shift and go to state 108
+    FALSE           shift and go to state 112
+    PID             shift and go to state 109
+    NUMBOTS         shift and go to state 110
+
+    bracketexp                     shift and go to state 103
+    varname                        shift and go to state 113
+    pid                            shift and go to state 105
+    num                            shift and go to state 106
+    exp                            shift and go to state 117
+    numbots                        shift and go to state 111
+    bval                           shift and go to state 107
+
+state 96
+
+    (51) stmts -> stmt stmts .
+
+    DEDENT          reduce using rule 51 (stmts -> stmt stmts .)
+
+
+state 97
+
+    (6) enumdef -> DEF ENUM CID COLON NL INDENT names NL DEDENT .
+
+    DEF             reduce using rule 6 (enumdef -> DEF ENUM CID COLON NL INDENT names NL DEDENT .)
+    MODULE          reduce using rule 6 (enumdef -> DEF ENUM CID COLON NL INDENT names NL DEDENT .)
+    ALLWRITE        reduce using rule 6 (enumdef -> DEF ENUM CID COLON NL INDENT names NL DEDENT .)
+    INIT            reduce using rule 6 (enumdef -> DEF ENUM CID COLON NL INDENT names NL DEDENT .)
+    LID             reduce using rule 6 (enumdef -> DEF ENUM CID COLON NL INDENT names NL DEDENT .)
+    ALLREAD         reduce using rule 6 (enumdef -> DEF ENUM CID COLON NL INDENT names NL DEDENT .)
+    LOCAL           reduce using rule 6 (enumdef -> DEF ENUM CID COLON NL INDENT names NL DEDENT .)
+
+
+state 98
+
+    (7) names -> names COMMA LID .
+
+    NL              reduce using rule 7 (names -> names COMMA LID .)
+    COMMA           reduce using rule 7 (names -> names COMMA LID .)
+
+
+state 99
+
+    (12) adecls -> ACTUATORS COLON NL INDENT . decls DEDENT
+    (16) decls -> . decl decls
+    (17) decls -> . empty
+    (18) decl -> . type varname ASGN exp NL
+    (19) decl -> . type varname NL
+    (71) empty -> .
+    (20) type -> . INT
+    (21) type -> . FLOAT
+    (22) type -> . POS
+    (23) type -> . BOOLEAN
+
+    DEDENT          reduce using rule 71 (empty -> .)
+    INT             shift and go to state 58
+    FLOAT           shift and go to state 59
+    POS             shift and go to state 60
+    BOOLEAN         shift and go to state 61
+
+    decl                           shift and go to state 57
+    decls                          shift and go to state 118
+    type                           shift and go to state 62
+    empty                          shift and go to state 64
+
+state 100
+
+    (14) sdecls -> SENSORS COLON NL . INDENT decls DEDENT
+
+    INDENT          shift and go to state 119
+
+
+state 101
+
+    (47) locdecls -> LOCAL COLON NL INDENT decls DEDENT .
+
+    INIT            reduce using rule 47 (locdecls -> LOCAL COLON NL INDENT decls DEDENT .)
+    LID             reduce using rule 47 (locdecls -> LOCAL COLON NL INDENT decls DEDENT .)
+
+
+state 102
+
+    (37) bracketexp -> LPAR . exp RPAR
+    (27) exp -> . bracketexp
+    (28) exp -> . exp PLUS exp
+    (29) exp -> . exp TIMES exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp BY exp
+    (32) exp -> . varname
+    (33) exp -> . num
+    (34) exp -> . bval
+    (35) exp -> . pid
+    (36) exp -> . numbots
+    (37) bracketexp -> . LPAR exp RPAR
+    (25) varname -> . LID
+    (38) num -> . INUM
+    (39) num -> . FNUM
+    (40) bval -> . TRUE
+    (41) bval -> . FALSE
+    (24) pid -> . PID
+    (26) numbots -> . NUMBOTS
+
+    LPAR            shift and go to state 102
+    LID             shift and go to state 76
+    INUM            shift and go to state 115
+    FNUM            shift and go to state 104
+    TRUE            shift and go to state 108
+    FALSE           shift and go to state 112
+    PID             shift and go to state 109
+    NUMBOTS         shift and go to state 110
+
+    bracketexp                     shift and go to state 103
+    varname                        shift and go to state 113
+    pid                            shift and go to state 105
+    num                            shift and go to state 106
+    exp                            shift and go to state 120
+    numbots                        shift and go to state 111
+    bval                           shift and go to state 107
+
+state 103
+
+    (27) exp -> bracketexp .
+
+    PLUS            reduce using rule 27 (exp -> bracketexp .)
+    TIMES           reduce using rule 27 (exp -> bracketexp .)
+    MINUS           reduce using rule 27 (exp -> bracketexp .)
+    BY              reduce using rule 27 (exp -> bracketexp .)
+    NL              reduce using rule 27 (exp -> bracketexp .)
+    RPAR            reduce using rule 27 (exp -> bracketexp .)
+    AND             reduce using rule 27 (exp -> bracketexp .)
+    OR              reduce using rule 27 (exp -> bracketexp .)
+    EQ              reduce using rule 27 (exp -> bracketexp .)
+    NEQ             reduce using rule 27 (exp -> bracketexp .)
+    GEQ             reduce using rule 27 (exp -> bracketexp .)
+    LEQ             reduce using rule 27 (exp -> bracketexp .)
+    GT              reduce using rule 27 (exp -> bracketexp .)
+    LT              reduce using rule 27 (exp -> bracketexp .)
+
+
+state 104
+
+    (39) num -> FNUM .
+
+    PLUS            reduce using rule 39 (num -> FNUM .)
+    TIMES           reduce using rule 39 (num -> FNUM .)
+    MINUS           reduce using rule 39 (num -> FNUM .)
+    BY              reduce using rule 39 (num -> FNUM .)
+    RPAR            reduce using rule 39 (num -> FNUM .)
+    NL              reduce using rule 39 (num -> FNUM .)
+    AND             reduce using rule 39 (num -> FNUM .)
+    OR              reduce using rule 39 (num -> FNUM .)
+    EQ              reduce using rule 39 (num -> FNUM .)
+    NEQ             reduce using rule 39 (num -> FNUM .)
+    GEQ             reduce using rule 39 (num -> FNUM .)
+    LEQ             reduce using rule 39 (num -> FNUM .)
+    GT              reduce using rule 39 (num -> FNUM .)
+    LT              reduce using rule 39 (num -> FNUM .)
+
+
+state 105
+
+    (35) exp -> pid .
+
+    PLUS            reduce using rule 35 (exp -> pid .)
+    TIMES           reduce using rule 35 (exp -> pid .)
+    MINUS           reduce using rule 35 (exp -> pid .)
+    BY              reduce using rule 35 (exp -> pid .)
+    NL              reduce using rule 35 (exp -> pid .)
+    RPAR            reduce using rule 35 (exp -> pid .)
+    AND             reduce using rule 35 (exp -> pid .)
+    OR              reduce using rule 35 (exp -> pid .)
+    EQ              reduce using rule 35 (exp -> pid .)
+    NEQ             reduce using rule 35 (exp -> pid .)
+    GEQ             reduce using rule 35 (exp -> pid .)
+    LEQ             reduce using rule 35 (exp -> pid .)
+    GT              reduce using rule 35 (exp -> pid .)
+    LT              reduce using rule 35 (exp -> pid .)
+
+
+state 106
+
+    (33) exp -> num .
+
+    PLUS            reduce using rule 33 (exp -> num .)
+    TIMES           reduce using rule 33 (exp -> num .)
+    MINUS           reduce using rule 33 (exp -> num .)
+    BY              reduce using rule 33 (exp -> num .)
+    NL              reduce using rule 33 (exp -> num .)
+    RPAR            reduce using rule 33 (exp -> num .)
+    AND             reduce using rule 33 (exp -> num .)
+    OR              reduce using rule 33 (exp -> num .)
+    EQ              reduce using rule 33 (exp -> num .)
+    NEQ             reduce using rule 33 (exp -> num .)
+    GEQ             reduce using rule 33 (exp -> num .)
+    LEQ             reduce using rule 33 (exp -> num .)
+    GT              reduce using rule 33 (exp -> num .)
+    LT              reduce using rule 33 (exp -> num .)
+
+
+state 107
+
+    (34) exp -> bval .
+
+    PLUS            reduce using rule 34 (exp -> bval .)
+    TIMES           reduce using rule 34 (exp -> bval .)
+    MINUS           reduce using rule 34 (exp -> bval .)
+    BY              reduce using rule 34 (exp -> bval .)
+    NL              reduce using rule 34 (exp -> bval .)
+    RPAR            reduce using rule 34 (exp -> bval .)
+    AND             reduce using rule 34 (exp -> bval .)
+    OR              reduce using rule 34 (exp -> bval .)
+    EQ              reduce using rule 34 (exp -> bval .)
+    NEQ             reduce using rule 34 (exp -> bval .)
+    GEQ             reduce using rule 34 (exp -> bval .)
+    LEQ             reduce using rule 34 (exp -> bval .)
+    GT              reduce using rule 34 (exp -> bval .)
+    LT              reduce using rule 34 (exp -> bval .)
+
+
+state 108
+
+    (40) bval -> TRUE .
+
+    PLUS            reduce using rule 40 (bval -> TRUE .)
+    TIMES           reduce using rule 40 (bval -> TRUE .)
+    MINUS           reduce using rule 40 (bval -> TRUE .)
+    BY              reduce using rule 40 (bval -> TRUE .)
+    NL              reduce using rule 40 (bval -> TRUE .)
+    RPAR            reduce using rule 40 (bval -> TRUE .)
+    AND             reduce using rule 40 (bval -> TRUE .)
+    OR              reduce using rule 40 (bval -> TRUE .)
+    EQ              reduce using rule 40 (bval -> TRUE .)
+    NEQ             reduce using rule 40 (bval -> TRUE .)
+    GEQ             reduce using rule 40 (bval -> TRUE .)
+    LEQ             reduce using rule 40 (bval -> TRUE .)
+    GT              reduce using rule 40 (bval -> TRUE .)
+    LT              reduce using rule 40 (bval -> TRUE .)
+
+
+state 109
+
+    (24) pid -> PID .
+
+    PLUS            reduce using rule 24 (pid -> PID .)
+    TIMES           reduce using rule 24 (pid -> PID .)
+    MINUS           reduce using rule 24 (pid -> PID .)
+    BY              reduce using rule 24 (pid -> PID .)
+    NL              reduce using rule 24 (pid -> PID .)
+    RPAR            reduce using rule 24 (pid -> PID .)
+    AND             reduce using rule 24 (pid -> PID .)
+    OR              reduce using rule 24 (pid -> PID .)
+    EQ              reduce using rule 24 (pid -> PID .)
+    NEQ             reduce using rule 24 (pid -> PID .)
+    GEQ             reduce using rule 24 (pid -> PID .)
+    LEQ             reduce using rule 24 (pid -> PID .)
+    GT              reduce using rule 24 (pid -> PID .)
+    LT              reduce using rule 24 (pid -> PID .)
+
+
+state 110
+
+    (26) numbots -> NUMBOTS .
+
+    PLUS            reduce using rule 26 (numbots -> NUMBOTS .)
+    TIMES           reduce using rule 26 (numbots -> NUMBOTS .)
+    MINUS           reduce using rule 26 (numbots -> NUMBOTS .)
+    BY              reduce using rule 26 (numbots -> NUMBOTS .)
+    RPAR            reduce using rule 26 (numbots -> NUMBOTS .)
+    AND             reduce using rule 26 (numbots -> NUMBOTS .)
+    OR              reduce using rule 26 (numbots -> NUMBOTS .)
+    EQ              reduce using rule 26 (numbots -> NUMBOTS .)
+    NEQ             reduce using rule 26 (numbots -> NUMBOTS .)
+    GEQ             reduce using rule 26 (numbots -> NUMBOTS .)
+    LEQ             reduce using rule 26 (numbots -> NUMBOTS .)
+    GT              reduce using rule 26 (numbots -> NUMBOTS .)
+    LT              reduce using rule 26 (numbots -> NUMBOTS .)
+    NL              reduce using rule 26 (numbots -> NUMBOTS .)
+
+
+state 111
+
+    (36) exp -> numbots .
+
+    PLUS            reduce using rule 36 (exp -> numbots .)
+    TIMES           reduce using rule 36 (exp -> numbots .)
+    MINUS           reduce using rule 36 (exp -> numbots .)
+    BY              reduce using rule 36 (exp -> numbots .)
+    NL              reduce using rule 36 (exp -> numbots .)
+    RPAR            reduce using rule 36 (exp -> numbots .)
+    AND             reduce using rule 36 (exp -> numbots .)
+    OR              reduce using rule 36 (exp -> numbots .)
+    EQ              reduce using rule 36 (exp -> numbots .)
+    NEQ             reduce using rule 36 (exp -> numbots .)
+    GEQ             reduce using rule 36 (exp -> numbots .)
+    LEQ             reduce using rule 36 (exp -> numbots .)
+    GT              reduce using rule 36 (exp -> numbots .)
+    LT              reduce using rule 36 (exp -> numbots .)
+
+
+state 112
+
+    (41) bval -> FALSE .
+
+    PLUS            reduce using rule 41 (bval -> FALSE .)
+    TIMES           reduce using rule 41 (bval -> FALSE .)
+    MINUS           reduce using rule 41 (bval -> FALSE .)
+    BY              reduce using rule 41 (bval -> FALSE .)
+    NL              reduce using rule 41 (bval -> FALSE .)
+    RPAR            reduce using rule 41 (bval -> FALSE .)
+    AND             reduce using rule 41 (bval -> FALSE .)
+    OR              reduce using rule 41 (bval -> FALSE .)
+    EQ              reduce using rule 41 (bval -> FALSE .)
+    NEQ             reduce using rule 41 (bval -> FALSE .)
+    GEQ             reduce using rule 41 (bval -> FALSE .)
+    LEQ             reduce using rule 41 (bval -> FALSE .)
+    GT              reduce using rule 41 (bval -> FALSE .)
+    LT              reduce using rule 41 (bval -> FALSE .)
+
+
+state 113
+
+    (32) exp -> varname .
+
+    PLUS            reduce using rule 32 (exp -> varname .)
+    TIMES           reduce using rule 32 (exp -> varname .)
+    MINUS           reduce using rule 32 (exp -> varname .)
+    BY              reduce using rule 32 (exp -> varname .)
+    NL              reduce using rule 32 (exp -> varname .)
+    RPAR            reduce using rule 32 (exp -> varname .)
+    AND             reduce using rule 32 (exp -> varname .)
+    OR              reduce using rule 32 (exp -> varname .)
+    EQ              reduce using rule 32 (exp -> varname .)
+    NEQ             reduce using rule 32 (exp -> varname .)
+    GEQ             reduce using rule 32 (exp -> varname .)
+    LEQ             reduce using rule 32 (exp -> varname .)
+    GT              reduce using rule 32 (exp -> varname .)
+    LT              reduce using rule 32 (exp -> varname .)
+
+
+state 114
+
+    (18) decl -> type varname ASGN exp . NL
+    (28) exp -> exp . PLUS exp
+    (29) exp -> exp . TIMES exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . BY exp
+
+    NL              shift and go to state 121
+    PLUS            shift and go to state 123
+    TIMES           shift and go to state 124
+    MINUS           shift and go to state 125
+    BY              shift and go to state 122
+
+
+state 115
+
+    (38) num -> INUM .
+
+    PLUS            reduce using rule 38 (num -> INUM .)
+    TIMES           reduce using rule 38 (num -> INUM .)
+    MINUS           reduce using rule 38 (num -> INUM .)
+    BY              reduce using rule 38 (num -> INUM .)
+    RPAR            reduce using rule 38 (num -> INUM .)
+    NL              reduce using rule 38 (num -> INUM .)
+    AND             reduce using rule 38 (num -> INUM .)
+    OR              reduce using rule 38 (num -> INUM .)
+    EQ              reduce using rule 38 (num -> INUM .)
+    NEQ             reduce using rule 38 (num -> INUM .)
+    GEQ             reduce using rule 38 (num -> INUM .)
+    LEQ             reduce using rule 38 (num -> INUM .)
+    GT              reduce using rule 38 (num -> INUM .)
+    LT              reduce using rule 38 (num -> INUM .)
+
+
+state 116
+
+    (57) event -> LID COLON NL INDENT PRE COLON . cond NL effblock DEDENT
+    (60) cond -> . LPAR cond AND cond RPAR
+    (61) cond -> . LPAR cond OR cond RPAR
+    (62) cond -> . LPAR cond op cond RPAR
+    (63) cond -> . LPAR NOT cond RPAR
+    (64) cond -> . exp
+    (27) exp -> . bracketexp
+    (28) exp -> . exp PLUS exp
+    (29) exp -> . exp TIMES exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp BY exp
+    (32) exp -> . varname
+    (33) exp -> . num
+    (34) exp -> . bval
+    (35) exp -> . pid
+    (36) exp -> . numbots
+    (37) bracketexp -> . LPAR exp RPAR
+    (25) varname -> . LID
+    (38) num -> . INUM
+    (39) num -> . FNUM
+    (40) bval -> . TRUE
+    (41) bval -> . FALSE
+    (24) pid -> . PID
+    (26) numbots -> . NUMBOTS
+
+    LPAR            shift and go to state 126
+    LID             shift and go to state 76
+    INUM            shift and go to state 115
+    FNUM            shift and go to state 104
+    TRUE            shift and go to state 108
+    FALSE           shift and go to state 112
+    PID             shift and go to state 109
+    NUMBOTS         shift and go to state 110
+
+    bracketexp                     shift and go to state 103
+    varname                        shift and go to state 113
+    pid                            shift and go to state 105
+    num                            shift and go to state 106
+    cond                           shift and go to state 127
+    exp                            shift and go to state 128
+    numbots                        shift and go to state 111
+    bval                           shift and go to state 107
+
+state 117
+
+    (54) asgn -> varname ASGN exp . NL
+    (28) exp -> exp . PLUS exp
+    (29) exp -> exp . TIMES exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . BY exp
+
+    NL              shift and go to state 129
+    PLUS            shift and go to state 123
+    TIMES           shift and go to state 124
+    MINUS           shift and go to state 125
+    BY              shift and go to state 122
+
+
+state 118
+
+    (12) adecls -> ACTUATORS COLON NL INDENT decls . DEDENT
+
+    DEDENT          shift and go to state 130
+
+
+state 119
+
+    (14) sdecls -> SENSORS COLON NL INDENT . decls DEDENT
+    (16) decls -> . decl decls
+    (17) decls -> . empty
+    (18) decl -> . type varname ASGN exp NL
+    (19) decl -> . type varname NL
+    (71) empty -> .
+    (20) type -> . INT
+    (21) type -> . FLOAT
+    (22) type -> . POS
+    (23) type -> . BOOLEAN
+
+    DEDENT          reduce using rule 71 (empty -> .)
+    INT             shift and go to state 58
+    FLOAT           shift and go to state 59
+    POS             shift and go to state 60
+    BOOLEAN         shift and go to state 61
+
+    decl                           shift and go to state 57
+    decls                          shift and go to state 131
+    type                           shift and go to state 62
+    empty                          shift and go to state 64
+
+state 120
+
+    (37) bracketexp -> LPAR exp . RPAR
+    (28) exp -> exp . PLUS exp
+    (29) exp -> exp . TIMES exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . BY exp
+
+    RPAR            shift and go to state 132
+    PLUS            shift and go to state 123
+    TIMES           shift and go to state 124
+    MINUS           shift and go to state 125
+    BY              shift and go to state 122
+
+
+state 121
+
+    (18) decl -> type varname ASGN exp NL .
+
+    INT             reduce using rule 18 (decl -> type varname ASGN exp NL .)
+    FLOAT           reduce using rule 18 (decl -> type varname ASGN exp NL .)
+    POS             reduce using rule 18 (decl -> type varname ASGN exp NL .)
+    BOOLEAN         reduce using rule 18 (decl -> type varname ASGN exp NL .)
+    DEDENT          reduce using rule 18 (decl -> type varname ASGN exp NL .)
+
+
+state 122
+
+    (31) exp -> exp BY . exp
+    (27) exp -> . bracketexp
+    (28) exp -> . exp PLUS exp
+    (29) exp -> . exp TIMES exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp BY exp
+    (32) exp -> . varname
+    (33) exp -> . num
+    (34) exp -> . bval
+    (35) exp -> . pid
+    (36) exp -> . numbots
+    (37) bracketexp -> . LPAR exp RPAR
+    (25) varname -> . LID
+    (38) num -> . INUM
+    (39) num -> . FNUM
+    (40) bval -> . TRUE
+    (41) bval -> . FALSE
+    (24) pid -> . PID
+    (26) numbots -> . NUMBOTS
+
+    LPAR            shift and go to state 102
+    LID             shift and go to state 76
+    INUM            shift and go to state 115
+    FNUM            shift and go to state 104
+    TRUE            shift and go to state 108
+    FALSE           shift and go to state 112
+    PID             shift and go to state 109
+    NUMBOTS         shift and go to state 110
+
+    bracketexp                     shift and go to state 103
+    varname                        shift and go to state 113
+    pid                            shift and go to state 105
+    num                            shift and go to state 106
+    exp                            shift and go to state 133
+    numbots                        shift and go to state 111
+    bval                           shift and go to state 107
+
+state 123
+
+    (28) exp -> exp PLUS . exp
+    (27) exp -> . bracketexp
+    (28) exp -> . exp PLUS exp
+    (29) exp -> . exp TIMES exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp BY exp
+    (32) exp -> . varname
+    (33) exp -> . num
+    (34) exp -> . bval
+    (35) exp -> . pid
+    (36) exp -> . numbots
+    (37) bracketexp -> . LPAR exp RPAR
+    (25) varname -> . LID
+    (38) num -> . INUM
+    (39) num -> . FNUM
+    (40) bval -> . TRUE
+    (41) bval -> . FALSE
+    (24) pid -> . PID
+    (26) numbots -> . NUMBOTS
+
+    LPAR            shift and go to state 102
+    LID             shift and go to state 76
+    INUM            shift and go to state 115
+    FNUM            shift and go to state 104
+    TRUE            shift and go to state 108
+    FALSE           shift and go to state 112
+    PID             shift and go to state 109
+    NUMBOTS         shift and go to state 110
+
+    bracketexp                     shift and go to state 103
+    varname                        shift and go to state 113
+    pid                            shift and go to state 105
+    num                            shift and go to state 106
+    exp                            shift and go to state 134
+    numbots                        shift and go to state 111
+    bval                           shift and go to state 107
+
+state 124
+
+    (29) exp -> exp TIMES . exp
+    (27) exp -> . bracketexp
+    (28) exp -> . exp PLUS exp
+    (29) exp -> . exp TIMES exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp BY exp
+    (32) exp -> . varname
+    (33) exp -> . num
+    (34) exp -> . bval
+    (35) exp -> . pid
+    (36) exp -> . numbots
+    (37) bracketexp -> . LPAR exp RPAR
+    (25) varname -> . LID
+    (38) num -> . INUM
+    (39) num -> . FNUM
+    (40) bval -> . TRUE
+    (41) bval -> . FALSE
+    (24) pid -> . PID
+    (26) numbots -> . NUMBOTS
+
+    LPAR            shift and go to state 102
+    LID             shift and go to state 76
+    INUM            shift and go to state 115
+    FNUM            shift and go to state 104
+    TRUE            shift and go to state 108
+    FALSE           shift and go to state 112
+    PID             shift and go to state 109
+    NUMBOTS         shift and go to state 110
+
+    bracketexp                     shift and go to state 103
+    varname                        shift and go to state 113
+    pid                            shift and go to state 105
+    num                            shift and go to state 106
+    exp                            shift and go to state 135
+    numbots                        shift and go to state 111
+    bval                           shift and go to state 107
+
+state 125
+
+    (30) exp -> exp MINUS . exp
+    (27) exp -> . bracketexp
+    (28) exp -> . exp PLUS exp
+    (29) exp -> . exp TIMES exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp BY exp
+    (32) exp -> . varname
+    (33) exp -> . num
+    (34) exp -> . bval
+    (35) exp -> . pid
+    (36) exp -> . numbots
+    (37) bracketexp -> . LPAR exp RPAR
+    (25) varname -> . LID
+    (38) num -> . INUM
+    (39) num -> . FNUM
+    (40) bval -> . TRUE
+    (41) bval -> . FALSE
+    (24) pid -> . PID
+    (26) numbots -> . NUMBOTS
+
+    LPAR            shift and go to state 102
+    LID             shift and go to state 76
+    INUM            shift and go to state 115
+    FNUM            shift and go to state 104
+    TRUE            shift and go to state 108
+    FALSE           shift and go to state 112
+    PID             shift and go to state 109
+    NUMBOTS         shift and go to state 110
+
+    bracketexp                     shift and go to state 103
+    varname                        shift and go to state 113
+    pid                            shift and go to state 105
+    num                            shift and go to state 106
+    exp                            shift and go to state 136
+    numbots                        shift and go to state 111
+    bval                           shift and go to state 107
+
+state 126
+
+    (60) cond -> LPAR . cond AND cond RPAR
+    (61) cond -> LPAR . cond OR cond RPAR
+    (62) cond -> LPAR . cond op cond RPAR
+    (63) cond -> LPAR . NOT cond RPAR
+    (37) bracketexp -> LPAR . exp RPAR
+    (60) cond -> . LPAR cond AND cond RPAR
+    (61) cond -> . LPAR cond OR cond RPAR
+    (62) cond -> . LPAR cond op cond RPAR
+    (63) cond -> . LPAR NOT cond RPAR
+    (64) cond -> . exp
+    (27) exp -> . bracketexp
+    (28) exp -> . exp PLUS exp
+    (29) exp -> . exp TIMES exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp BY exp
+    (32) exp -> . varname
+    (33) exp -> . num
+    (34) exp -> . bval
+    (35) exp -> . pid
+    (36) exp -> . numbots
+    (37) bracketexp -> . LPAR exp RPAR
+    (25) varname -> . LID
+    (38) num -> . INUM
+    (39) num -> . FNUM
+    (40) bval -> . TRUE
+    (41) bval -> . FALSE
+    (24) pid -> . PID
+    (26) numbots -> . NUMBOTS
+
+    NOT             shift and go to state 139
+    LPAR            shift and go to state 126
+    LID             shift and go to state 76
+    INUM            shift and go to state 115
+    FNUM            shift and go to state 104
+    TRUE            shift and go to state 108
+    FALSE           shift and go to state 112
+    PID             shift and go to state 109
+    NUMBOTS         shift and go to state 110
+
+    bracketexp                     shift and go to state 103
+    varname                        shift and go to state 113
+    pid                            shift and go to state 105
+    num                            shift and go to state 106
+    cond                           shift and go to state 137
+    exp                            shift and go to state 138
+    numbots                        shift and go to state 111
+    bval                           shift and go to state 107
+
+state 127
+
+    (57) event -> LID COLON NL INDENT PRE COLON cond . NL effblock DEDENT
+
+    NL              shift and go to state 140
+
+
+state 128
+
+    (64) cond -> exp .
+    (28) exp -> exp . PLUS exp
+    (29) exp -> exp . TIMES exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . BY exp
+
+    RPAR            reduce using rule 64 (cond -> exp .)
+    NL              reduce using rule 64 (cond -> exp .)
+    PLUS            shift and go to state 123
+    TIMES           shift and go to state 124
+    MINUS           shift and go to state 125
+    BY              shift and go to state 122
+
+
+state 129
+
+    (54) asgn -> varname ASGN exp NL .
+
+    LID             reduce using rule 54 (asgn -> varname ASGN exp NL .)
+    DEDENT          reduce using rule 54 (asgn -> varname ASGN exp NL .)
+
+
+state 130
+
+    (12) adecls -> ACTUATORS COLON NL INDENT decls DEDENT .
+
+    SENSORS         reduce using rule 12 (adecls -> ACTUATORS COLON NL INDENT decls DEDENT .)
+    DEDENT          reduce using rule 12 (adecls -> ACTUATORS COLON NL INDENT decls DEDENT .)
+
+
+state 131
+
+    (14) sdecls -> SENSORS COLON NL INDENT decls . DEDENT
+
+    DEDENT          shift and go to state 141
+
+
+state 132
+
+    (37) bracketexp -> LPAR exp RPAR .
+
+    PLUS            reduce using rule 37 (bracketexp -> LPAR exp RPAR .)
+    TIMES           reduce using rule 37 (bracketexp -> LPAR exp RPAR .)
+    MINUS           reduce using rule 37 (bracketexp -> LPAR exp RPAR .)
+    BY              reduce using rule 37 (bracketexp -> LPAR exp RPAR .)
+    NL              reduce using rule 37 (bracketexp -> LPAR exp RPAR .)
+    RPAR            reduce using rule 37 (bracketexp -> LPAR exp RPAR .)
+    AND             reduce using rule 37 (bracketexp -> LPAR exp RPAR .)
+    OR              reduce using rule 37 (bracketexp -> LPAR exp RPAR .)
+    EQ              reduce using rule 37 (bracketexp -> LPAR exp RPAR .)
+    NEQ             reduce using rule 37 (bracketexp -> LPAR exp RPAR .)
+    GEQ             reduce using rule 37 (bracketexp -> LPAR exp RPAR .)
+    LEQ             reduce using rule 37 (bracketexp -> LPAR exp RPAR .)
+    GT              reduce using rule 37 (bracketexp -> LPAR exp RPAR .)
+    LT              reduce using rule 37 (bracketexp -> LPAR exp RPAR .)
+
+
+state 133
+
+    (31) exp -> exp BY exp .
+    (28) exp -> exp . PLUS exp
+    (29) exp -> exp . TIMES exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . BY exp
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for BY resolved as shift
+    NL              reduce using rule 31 (exp -> exp BY exp .)
+    RPAR            reduce using rule 31 (exp -> exp BY exp .)
+    AND             reduce using rule 31 (exp -> exp BY exp .)
+    OR              reduce using rule 31 (exp -> exp BY exp .)
+    EQ              reduce using rule 31 (exp -> exp BY exp .)
+    NEQ             reduce using rule 31 (exp -> exp BY exp .)
+    GEQ             reduce using rule 31 (exp -> exp BY exp .)
+    LEQ             reduce using rule 31 (exp -> exp BY exp .)
+    GT              reduce using rule 31 (exp -> exp BY exp .)
+    LT              reduce using rule 31 (exp -> exp BY exp .)
+    PLUS            shift and go to state 123
+    TIMES           shift and go to state 124
+    MINUS           shift and go to state 125
+    BY              shift and go to state 122
+
+  ! PLUS            [ reduce using rule 31 (exp -> exp BY exp .) ]
+  ! TIMES           [ reduce using rule 31 (exp -> exp BY exp .) ]
+  ! MINUS           [ reduce using rule 31 (exp -> exp BY exp .) ]
+  ! BY              [ reduce using rule 31 (exp -> exp BY exp .) ]
+
+
+state 134
+
+    (28) exp -> exp PLUS exp .
+    (28) exp -> exp . PLUS exp
+    (29) exp -> exp . TIMES exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . BY exp
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for BY resolved as shift
+    NL              reduce using rule 28 (exp -> exp PLUS exp .)
+    RPAR            reduce using rule 28 (exp -> exp PLUS exp .)
+    AND             reduce using rule 28 (exp -> exp PLUS exp .)
+    OR              reduce using rule 28 (exp -> exp PLUS exp .)
+    EQ              reduce using rule 28 (exp -> exp PLUS exp .)
+    NEQ             reduce using rule 28 (exp -> exp PLUS exp .)
+    GEQ             reduce using rule 28 (exp -> exp PLUS exp .)
+    LEQ             reduce using rule 28 (exp -> exp PLUS exp .)
+    GT              reduce using rule 28 (exp -> exp PLUS exp .)
+    LT              reduce using rule 28 (exp -> exp PLUS exp .)
+    PLUS            shift and go to state 123
+    TIMES           shift and go to state 124
+    MINUS           shift and go to state 125
+    BY              shift and go to state 122
+
+  ! PLUS            [ reduce using rule 28 (exp -> exp PLUS exp .) ]
+  ! TIMES           [ reduce using rule 28 (exp -> exp PLUS exp .) ]
+  ! MINUS           [ reduce using rule 28 (exp -> exp PLUS exp .) ]
+  ! BY              [ reduce using rule 28 (exp -> exp PLUS exp .) ]
+
+
+state 135
+
+    (29) exp -> exp TIMES exp .
+    (28) exp -> exp . PLUS exp
+    (29) exp -> exp . TIMES exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . BY exp
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for BY resolved as shift
+    NL              reduce using rule 29 (exp -> exp TIMES exp .)
+    RPAR            reduce using rule 29 (exp -> exp TIMES exp .)
+    AND             reduce using rule 29 (exp -> exp TIMES exp .)
+    OR              reduce using rule 29 (exp -> exp TIMES exp .)
+    EQ              reduce using rule 29 (exp -> exp TIMES exp .)
+    NEQ             reduce using rule 29 (exp -> exp TIMES exp .)
+    GEQ             reduce using rule 29 (exp -> exp TIMES exp .)
+    LEQ             reduce using rule 29 (exp -> exp TIMES exp .)
+    GT              reduce using rule 29 (exp -> exp TIMES exp .)
+    LT              reduce using rule 29 (exp -> exp TIMES exp .)
+    PLUS            shift and go to state 123
+    TIMES           shift and go to state 124
+    MINUS           shift and go to state 125
+    BY              shift and go to state 122
+
+  ! PLUS            [ reduce using rule 29 (exp -> exp TIMES exp .) ]
+  ! TIMES           [ reduce using rule 29 (exp -> exp TIMES exp .) ]
+  ! MINUS           [ reduce using rule 29 (exp -> exp TIMES exp .) ]
+  ! BY              [ reduce using rule 29 (exp -> exp TIMES exp .) ]
+
+
+state 136
+
+    (30) exp -> exp MINUS exp .
+    (28) exp -> exp . PLUS exp
+    (29) exp -> exp . TIMES exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . BY exp
+
+  ! shift/reduce conflict for PLUS resolved as shift
+  ! shift/reduce conflict for TIMES resolved as shift
+  ! shift/reduce conflict for MINUS resolved as shift
+  ! shift/reduce conflict for BY resolved as shift
+    NL              reduce using rule 30 (exp -> exp MINUS exp .)
+    RPAR            reduce using rule 30 (exp -> exp MINUS exp .)
+    AND             reduce using rule 30 (exp -> exp MINUS exp .)
+    OR              reduce using rule 30 (exp -> exp MINUS exp .)
+    EQ              reduce using rule 30 (exp -> exp MINUS exp .)
+    NEQ             reduce using rule 30 (exp -> exp MINUS exp .)
+    GEQ             reduce using rule 30 (exp -> exp MINUS exp .)
+    LEQ             reduce using rule 30 (exp -> exp MINUS exp .)
+    GT              reduce using rule 30 (exp -> exp MINUS exp .)
+    LT              reduce using rule 30 (exp -> exp MINUS exp .)
+    PLUS            shift and go to state 123
+    TIMES           shift and go to state 124
+    MINUS           shift and go to state 125
+    BY              shift and go to state 122
+
+  ! PLUS            [ reduce using rule 30 (exp -> exp MINUS exp .) ]
+  ! TIMES           [ reduce using rule 30 (exp -> exp MINUS exp .) ]
+  ! MINUS           [ reduce using rule 30 (exp -> exp MINUS exp .) ]
+  ! BY              [ reduce using rule 30 (exp -> exp MINUS exp .) ]
+
+
+state 137
+
+    (60) cond -> LPAR cond . AND cond RPAR
+    (61) cond -> LPAR cond . OR cond RPAR
+    (62) cond -> LPAR cond . op cond RPAR
+    (65) op -> . EQ
+    (66) op -> . NEQ
+    (67) op -> . GEQ
+    (68) op -> . LEQ
+    (69) op -> . GT
+    (70) op -> . LT
+
+    AND             shift and go to state 142
+    OR              shift and go to state 149
+    EQ              shift and go to state 148
+    NEQ             shift and go to state 147
+    GEQ             shift and go to state 143
+    LEQ             shift and go to state 145
+    GT              shift and go to state 144
+    LT              shift and go to state 146
+
+    op                             shift and go to state 150
+
+state 138
+
+    (37) bracketexp -> LPAR exp . RPAR
+    (64) cond -> exp .
+    (28) exp -> exp . PLUS exp
+    (29) exp -> exp . TIMES exp
+    (30) exp -> exp . MINUS exp
+    (31) exp -> exp . BY exp
+
+    RPAR            shift and go to state 132
+    AND             reduce using rule 64 (cond -> exp .)
+    OR              reduce using rule 64 (cond -> exp .)
+    EQ              reduce using rule 64 (cond -> exp .)
+    NEQ             reduce using rule 64 (cond -> exp .)
+    GEQ             reduce using rule 64 (cond -> exp .)
+    LEQ             reduce using rule 64 (cond -> exp .)
+    GT              reduce using rule 64 (cond -> exp .)
+    LT              reduce using rule 64 (cond -> exp .)
+    PLUS            shift and go to state 123
+    TIMES           shift and go to state 124
+    MINUS           shift and go to state 125
+    BY              shift and go to state 122
+
+
+state 139
+
+    (63) cond -> LPAR NOT . cond RPAR
+    (60) cond -> . LPAR cond AND cond RPAR
+    (61) cond -> . LPAR cond OR cond RPAR
+    (62) cond -> . LPAR cond op cond RPAR
+    (63) cond -> . LPAR NOT cond RPAR
+    (64) cond -> . exp
+    (27) exp -> . bracketexp
+    (28) exp -> . exp PLUS exp
+    (29) exp -> . exp TIMES exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp BY exp
+    (32) exp -> . varname
+    (33) exp -> . num
+    (34) exp -> . bval
+    (35) exp -> . pid
+    (36) exp -> . numbots
+    (37) bracketexp -> . LPAR exp RPAR
+    (25) varname -> . LID
+    (38) num -> . INUM
+    (39) num -> . FNUM
+    (40) bval -> . TRUE
+    (41) bval -> . FALSE
+    (24) pid -> . PID
+    (26) numbots -> . NUMBOTS
+
+    LPAR            shift and go to state 126
+    LID             shift and go to state 76
+    INUM            shift and go to state 115
+    FNUM            shift and go to state 104
+    TRUE            shift and go to state 108
+    FALSE           shift and go to state 112
+    PID             shift and go to state 109
+    NUMBOTS         shift and go to state 110
+
+    bracketexp                     shift and go to state 103
+    varname                        shift and go to state 113
+    pid                            shift and go to state 105
+    num                            shift and go to state 106
+    cond                           shift and go to state 151
+    exp                            shift and go to state 128
+    numbots                        shift and go to state 111
+    bval                           shift and go to state 107
+
+state 140
+
+    (57) event -> LID COLON NL INDENT PRE COLON cond NL . effblock DEDENT
+    (58) effblock -> . EFF COLON NL INDENT stmts DEDENT
+    (59) effblock -> . EFF COLON stmt
+
+    EFF             shift and go to state 153
+
+    effblock                       shift and go to state 152
+
+state 141
+
+    (14) sdecls -> SENSORS COLON NL INDENT decls DEDENT .
+
+    DEDENT          reduce using rule 14 (sdecls -> SENSORS COLON NL INDENT decls DEDENT .)
+
+
+state 142
+
+    (60) cond -> LPAR cond AND . cond RPAR
+    (60) cond -> . LPAR cond AND cond RPAR
+    (61) cond -> . LPAR cond OR cond RPAR
+    (62) cond -> . LPAR cond op cond RPAR
+    (63) cond -> . LPAR NOT cond RPAR
+    (64) cond -> . exp
+    (27) exp -> . bracketexp
+    (28) exp -> . exp PLUS exp
+    (29) exp -> . exp TIMES exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp BY exp
+    (32) exp -> . varname
+    (33) exp -> . num
+    (34) exp -> . bval
+    (35) exp -> . pid
+    (36) exp -> . numbots
+    (37) bracketexp -> . LPAR exp RPAR
+    (25) varname -> . LID
+    (38) num -> . INUM
+    (39) num -> . FNUM
+    (40) bval -> . TRUE
+    (41) bval -> . FALSE
+    (24) pid -> . PID
+    (26) numbots -> . NUMBOTS
+
+    LPAR            shift and go to state 126
+    LID             shift and go to state 76
+    INUM            shift and go to state 115
+    FNUM            shift and go to state 104
+    TRUE            shift and go to state 108
+    FALSE           shift and go to state 112
+    PID             shift and go to state 109
+    NUMBOTS         shift and go to state 110
+
+    bracketexp                     shift and go to state 103
+    varname                        shift and go to state 113
+    pid                            shift and go to state 105
+    num                            shift and go to state 106
+    cond                           shift and go to state 154
+    exp                            shift and go to state 128
+    numbots                        shift and go to state 111
+    bval                           shift and go to state 107
+
+state 143
+
+    (67) op -> GEQ .
+
+    LPAR            reduce using rule 67 (op -> GEQ .)
+    LID             reduce using rule 67 (op -> GEQ .)
+    INUM            reduce using rule 67 (op -> GEQ .)
+    FNUM            reduce using rule 67 (op -> GEQ .)
+    TRUE            reduce using rule 67 (op -> GEQ .)
+    FALSE           reduce using rule 67 (op -> GEQ .)
+    PID             reduce using rule 67 (op -> GEQ .)
+    NUMBOTS         reduce using rule 67 (op -> GEQ .)
+
+
+state 144
+
+    (69) op -> GT .
+
+    LPAR            reduce using rule 69 (op -> GT .)
+    LID             reduce using rule 69 (op -> GT .)
+    INUM            reduce using rule 69 (op -> GT .)
+    FNUM            reduce using rule 69 (op -> GT .)
+    TRUE            reduce using rule 69 (op -> GT .)
+    FALSE           reduce using rule 69 (op -> GT .)
+    PID             reduce using rule 69 (op -> GT .)
+    NUMBOTS         reduce using rule 69 (op -> GT .)
+
+
+state 145
+
+    (68) op -> LEQ .
+
+    LPAR            reduce using rule 68 (op -> LEQ .)
+    LID             reduce using rule 68 (op -> LEQ .)
+    INUM            reduce using rule 68 (op -> LEQ .)
+    FNUM            reduce using rule 68 (op -> LEQ .)
+    TRUE            reduce using rule 68 (op -> LEQ .)
+    FALSE           reduce using rule 68 (op -> LEQ .)
+    PID             reduce using rule 68 (op -> LEQ .)
+    NUMBOTS         reduce using rule 68 (op -> LEQ .)
+
+
+state 146
+
+    (70) op -> LT .
+
+    LPAR            reduce using rule 70 (op -> LT .)
+    LID             reduce using rule 70 (op -> LT .)
+    INUM            reduce using rule 70 (op -> LT .)
+    FNUM            reduce using rule 70 (op -> LT .)
+    TRUE            reduce using rule 70 (op -> LT .)
+    FALSE           reduce using rule 70 (op -> LT .)
+    PID             reduce using rule 70 (op -> LT .)
+    NUMBOTS         reduce using rule 70 (op -> LT .)
+
+
+state 147
+
+    (66) op -> NEQ .
+
+    LPAR            reduce using rule 66 (op -> NEQ .)
+    LID             reduce using rule 66 (op -> NEQ .)
+    INUM            reduce using rule 66 (op -> NEQ .)
+    FNUM            reduce using rule 66 (op -> NEQ .)
+    TRUE            reduce using rule 66 (op -> NEQ .)
+    FALSE           reduce using rule 66 (op -> NEQ .)
+    PID             reduce using rule 66 (op -> NEQ .)
+    NUMBOTS         reduce using rule 66 (op -> NEQ .)
+
+
+state 148
+
+    (65) op -> EQ .
+
+    LPAR            reduce using rule 65 (op -> EQ .)
+    LID             reduce using rule 65 (op -> EQ .)
+    INUM            reduce using rule 65 (op -> EQ .)
+    FNUM            reduce using rule 65 (op -> EQ .)
+    TRUE            reduce using rule 65 (op -> EQ .)
+    FALSE           reduce using rule 65 (op -> EQ .)
+    PID             reduce using rule 65 (op -> EQ .)
+    NUMBOTS         reduce using rule 65 (op -> EQ .)
+
+
+state 149
+
+    (61) cond -> LPAR cond OR . cond RPAR
+    (60) cond -> . LPAR cond AND cond RPAR
+    (61) cond -> . LPAR cond OR cond RPAR
+    (62) cond -> . LPAR cond op cond RPAR
+    (63) cond -> . LPAR NOT cond RPAR
+    (64) cond -> . exp
+    (27) exp -> . bracketexp
+    (28) exp -> . exp PLUS exp
+    (29) exp -> . exp TIMES exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp BY exp
+    (32) exp -> . varname
+    (33) exp -> . num
+    (34) exp -> . bval
+    (35) exp -> . pid
+    (36) exp -> . numbots
+    (37) bracketexp -> . LPAR exp RPAR
+    (25) varname -> . LID
+    (38) num -> . INUM
+    (39) num -> . FNUM
+    (40) bval -> . TRUE
+    (41) bval -> . FALSE
+    (24) pid -> . PID
+    (26) numbots -> . NUMBOTS
+
+    LPAR            shift and go to state 126
+    LID             shift and go to state 76
+    INUM            shift and go to state 115
+    FNUM            shift and go to state 104
+    TRUE            shift and go to state 108
+    FALSE           shift and go to state 112
+    PID             shift and go to state 109
+    NUMBOTS         shift and go to state 110
+
+    bracketexp                     shift and go to state 103
+    varname                        shift and go to state 113
+    pid                            shift and go to state 105
+    num                            shift and go to state 106
+    cond                           shift and go to state 155
+    exp                            shift and go to state 128
+    numbots                        shift and go to state 111
+    bval                           shift and go to state 107
+
+state 150
+
+    (62) cond -> LPAR cond op . cond RPAR
+    (60) cond -> . LPAR cond AND cond RPAR
+    (61) cond -> . LPAR cond OR cond RPAR
+    (62) cond -> . LPAR cond op cond RPAR
+    (63) cond -> . LPAR NOT cond RPAR
+    (64) cond -> . exp
+    (27) exp -> . bracketexp
+    (28) exp -> . exp PLUS exp
+    (29) exp -> . exp TIMES exp
+    (30) exp -> . exp MINUS exp
+    (31) exp -> . exp BY exp
+    (32) exp -> . varname
+    (33) exp -> . num
+    (34) exp -> . bval
+    (35) exp -> . pid
+    (36) exp -> . numbots
+    (37) bracketexp -> . LPAR exp RPAR
+    (25) varname -> . LID
+    (38) num -> . INUM
+    (39) num -> . FNUM
+    (40) bval -> . TRUE
+    (41) bval -> . FALSE
+    (24) pid -> . PID
+    (26) numbots -> . NUMBOTS
+
+    LPAR            shift and go to state 126
+    LID             shift and go to state 76
+    INUM            shift and go to state 115
+    FNUM            shift and go to state 104
+    TRUE            shift and go to state 108
+    FALSE           shift and go to state 112
+    PID             shift and go to state 109
+    NUMBOTS         shift and go to state 110
+
+    bracketexp                     shift and go to state 103
+    varname                        shift and go to state 113
+    pid                            shift and go to state 105
+    num                            shift and go to state 106
+    cond                           shift and go to state 156
+    exp                            shift and go to state 128
+    numbots                        shift and go to state 111
+    bval                           shift and go to state 107
+
+state 151
+
+    (63) cond -> LPAR NOT cond . RPAR
+
+    RPAR            shift and go to state 157
+
+
+state 152
+
+    (57) event -> LID COLON NL INDENT PRE COLON cond NL effblock . DEDENT
+
+    DEDENT          shift and go to state 158
+
+
+state 153
+
+    (58) effblock -> EFF . COLON NL INDENT stmts DEDENT
+    (59) effblock -> EFF . COLON stmt
+
+    COLON           shift and go to state 159
+
+
+state 154
+
+    (60) cond -> LPAR cond AND cond . RPAR
+
+    RPAR            shift and go to state 160
+
+
+state 155
+
+    (61) cond -> LPAR cond OR cond . RPAR
+
+    RPAR            shift and go to state 161
+
+
+state 156
+
+    (62) cond -> LPAR cond op cond . RPAR
+
+    RPAR            shift and go to state 162
+
+
+state 157
+
+    (63) cond -> LPAR NOT cond RPAR .
+
+    RPAR            reduce using rule 63 (cond -> LPAR NOT cond RPAR .)
+    AND             reduce using rule 63 (cond -> LPAR NOT cond RPAR .)
+    OR              reduce using rule 63 (cond -> LPAR NOT cond RPAR .)
+    EQ              reduce using rule 63 (cond -> LPAR NOT cond RPAR .)
+    NEQ             reduce using rule 63 (cond -> LPAR NOT cond RPAR .)
+    GEQ             reduce using rule 63 (cond -> LPAR NOT cond RPAR .)
+    LEQ             reduce using rule 63 (cond -> LPAR NOT cond RPAR .)
+    GT              reduce using rule 63 (cond -> LPAR NOT cond RPAR .)
+    LT              reduce using rule 63 (cond -> LPAR NOT cond RPAR .)
+    NL              reduce using rule 63 (cond -> LPAR NOT cond RPAR .)
+
+
+state 158
+
+    (57) event -> LID COLON NL INDENT PRE COLON cond NL effblock DEDENT .
+
+    LID             reduce using rule 57 (event -> LID COLON NL INDENT PRE COLON cond NL effblock DEDENT .)
+    $end            reduce using rule 57 (event -> LID COLON NL INDENT PRE COLON cond NL effblock DEDENT .)
+
+
+state 159
+
+    (58) effblock -> EFF COLON . NL INDENT stmts DEDENT
+    (59) effblock -> EFF COLON . stmt
+    (53) stmt -> . asgn
+    (54) asgn -> . varname ASGN exp NL
+    (25) varname -> . LID
+
+    NL              shift and go to state 163
+    LID             shift and go to state 76
+
+    varname                        shift and go to state 81
+    stmt                           shift and go to state 164
+    asgn                           shift and go to state 83
+
+state 160
+
+    (60) cond -> LPAR cond AND cond RPAR .
+
+    RPAR            reduce using rule 60 (cond -> LPAR cond AND cond RPAR .)
+    AND             reduce using rule 60 (cond -> LPAR cond AND cond RPAR .)
+    OR              reduce using rule 60 (cond -> LPAR cond AND cond RPAR .)
+    EQ              reduce using rule 60 (cond -> LPAR cond AND cond RPAR .)
+    NEQ             reduce using rule 60 (cond -> LPAR cond AND cond RPAR .)
+    GEQ             reduce using rule 60 (cond -> LPAR cond AND cond RPAR .)
+    LEQ             reduce using rule 60 (cond -> LPAR cond AND cond RPAR .)
+    GT              reduce using rule 60 (cond -> LPAR cond AND cond RPAR .)
+    LT              reduce using rule 60 (cond -> LPAR cond AND cond RPAR .)
+    NL              reduce using rule 60 (cond -> LPAR cond AND cond RPAR .)
+
+
+state 161
+
+    (61) cond -> LPAR cond OR cond RPAR .
+
+    RPAR            reduce using rule 61 (cond -> LPAR cond OR cond RPAR .)
+    AND             reduce using rule 61 (cond -> LPAR cond OR cond RPAR .)
+    OR              reduce using rule 61 (cond -> LPAR cond OR cond RPAR .)
+    EQ              reduce using rule 61 (cond -> LPAR cond OR cond RPAR .)
+    NEQ             reduce using rule 61 (cond -> LPAR cond OR cond RPAR .)
+    GEQ             reduce using rule 61 (cond -> LPAR cond OR cond RPAR .)
+    LEQ             reduce using rule 61 (cond -> LPAR cond OR cond RPAR .)
+    GT              reduce using rule 61 (cond -> LPAR cond OR cond RPAR .)
+    LT              reduce using rule 61 (cond -> LPAR cond OR cond RPAR .)
+    NL              reduce using rule 61 (cond -> LPAR cond OR cond RPAR .)
+
+
+state 162
+
+    (62) cond -> LPAR cond op cond RPAR .
+
+    RPAR            reduce using rule 62 (cond -> LPAR cond op cond RPAR .)
+    AND             reduce using rule 62 (cond -> LPAR cond op cond RPAR .)
+    OR              reduce using rule 62 (cond -> LPAR cond op cond RPAR .)
+    EQ              reduce using rule 62 (cond -> LPAR cond op cond RPAR .)
+    NEQ             reduce using rule 62 (cond -> LPAR cond op cond RPAR .)
+    GEQ             reduce using rule 62 (cond -> LPAR cond op cond RPAR .)
+    LEQ             reduce using rule 62 (cond -> LPAR cond op cond RPAR .)
+    GT              reduce using rule 62 (cond -> LPAR cond op cond RPAR .)
+    LT              reduce using rule 62 (cond -> LPAR cond op cond RPAR .)
+    NL              reduce using rule 62 (cond -> LPAR cond op cond RPAR .)
+
+
+state 163
+
+    (58) effblock -> EFF COLON NL . INDENT stmts DEDENT
+
+    INDENT          shift and go to state 165
+
+
+state 164
+
+    (59) effblock -> EFF COLON stmt .
+
+    DEDENT          reduce using rule 59 (effblock -> EFF COLON stmt .)
+
+
+state 165
+
+    (58) effblock -> EFF COLON NL INDENT . stmts DEDENT
+    (51) stmts -> . stmt stmts
+    (52) stmts -> . stmt
+    (53) stmt -> . asgn
+    (54) asgn -> . varname ASGN exp NL
+    (25) varname -> . LID
+
+    LID             shift and go to state 76
+
+    stmts                          shift and go to state 166
+    varname                        shift and go to state 81
+    stmt                           shift and go to state 82
+    asgn                           shift and go to state 83
+
+state 166
+
+    (58) effblock -> EFF COLON NL INDENT stmts . DEDENT
+
+    DEDENT          shift and go to state 167
+
+
+state 167
+
+    (58) effblock -> EFF COLON NL INDENT stmts DEDENT .
+
+    DEDENT          reduce using rule 58 (effblock -> EFF COLON NL INDENT stmts DEDENT .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for PLUS in state 133 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 133 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 133 resolved as shift
+WARNING: shift/reduce conflict for BY in state 133 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 134 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 134 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 134 resolved as shift
+WARNING: shift/reduce conflict for BY in state 134 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 135 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 135 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 135 resolved as shift
+WARNING: shift/reduce conflict for BY in state 135 resolved as shift
+WARNING: shift/reduce conflict for PLUS in state 136 resolved as shift
+WARNING: shift/reduce conflict for TIMES in state 136 resolved as shift
+WARNING: shift/reduce conflict for MINUS in state 136 resolved as shift
+WARNING: shift/reduce conflict for BY in state 136 resolved as shift

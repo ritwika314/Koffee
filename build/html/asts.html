@@ -1,0 +1,510 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Abstract Syntax Trees &#8212; Koffee 0.1 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="AST types" href="asttypes.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-asts">
+<span id="abstract-syntax-trees"></span><h1>Abstract Syntax Trees<a class="headerlink" href="#module-asts" title="Permalink to this headline">¶</a></h1>
+<p>ASTs, or abstract syntax trees are standard objects to help
+write parsers for a language specified as a BNF grammar.
+We define several useful ASTs to write our parser in the file <em>asts.py</em>.</p>
+<dl class="class">
+<dt id="asts.AsgnAst">
+<em class="property">class </em><code class="descclassname">asts.</code><code class="descname">AsgnAst</code><span class="sig-paren">(</span><em>lvar</em>, <em>rexp</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.AsgnAst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#asts.StmtAst" title="asts.StmtAst"><code class="xref py py-class docutils literal notranslate"><span class="pre">asts.StmtAst</span></code></a></p>
+<p>The AST for assignment statements</p>
+<dl class="method">
+<dt id="asts.AsgnAst.get_lvar">
+<code class="descname">get_lvar</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.AsgnAst.get_lvar" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">assignee of this statement</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.AsgnAst.get_rexp">
+<code class="descname">get_rexp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.AsgnAst.get_rexp" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">expression assigned of this statement</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="asts.AtomicAst">
+<em class="property">class </em><code class="descclassname">asts.</code><code class="descname">AtomicAst</code><span class="sig-paren">(</span><em>wnum</em>, <em>stmts</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.AtomicAst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#asts.StmtAst" title="asts.StmtAst"><code class="xref py py-class docutils literal notranslate"><span class="pre">asts.StmtAst</span></code></a></p>
+<p>Ast for atomic blocks</p>
+<dl class="method">
+<dt id="asts.AtomicAst.get_type">
+<code class="descname">get_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.AtomicAst.get_type" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the statement type</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="asts.CondAst">
+<em class="property">class </em><code class="descclassname">asts.</code><code class="descname">CondAst</code><span class="sig-paren">(</span><em>lexp</em>, <em>op=None</em>, <em>rexp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.CondAst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p>
+<p>AST for conditions.</p>
+<dl class="method">
+<dt id="asts.CondAst.get_lexp">
+<code class="descname">get_lexp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.CondAst.get_lexp" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">return left child</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.CondAst.get_op">
+<code class="descname">get_op</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.CondAst.get_op" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">return operator</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.CondAst.get_rexp">
+<code class="descname">get_rexp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.CondAst.get_rexp" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">return right child</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.CondAst.get_type">
+<code class="descname">get_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.CondAst.get_type" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Condition type.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="asts.DeclAst">
+<em class="property">class </em><code class="descclassname">asts.</code><code class="descname">DeclAst</code><span class="sig-paren">(</span><em>dtype</em>, <em>varname</em>, <em>value=None</em>, <em>scope=0</em>, <em>enumlist=None</em>, <em>module=None</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.DeclAst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p>
+<p>Basic declaration AST, will be used for the symtab parser</p>
+<dl class="method">
+<dt id="asts.DeclAst.get_dtype">
+<code class="descname">get_dtype</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.DeclAst.get_dtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Getter method for type of declaration.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.DeclAst.get_enumlist">
+<code class="descname">get_enumlist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.DeclAst.get_enumlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Getter method for enumlist if declaration is enum type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.DeclAst.get_module">
+<code class="descname">get_module</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.DeclAst.get_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Getter method for module of declaration.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.DeclAst.get_scope">
+<code class="descname">get_scope</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.DeclAst.get_scope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Getter method for scope of declaration.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.DeclAst.get_type">
+<code class="descname">get_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.DeclAst.get_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is used to get the AST type to generate
+the java code.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.DeclAst.get_value">
+<code class="descname">get_value</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.DeclAst.get_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Getter method for value of declaration.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.DeclAst.get_varname">
+<code class="descname">get_varname</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.DeclAst.get_varname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Getter method for variable name of declaration.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.DeclAst.set_dtype">
+<code class="descname">set_dtype</code><span class="sig-paren">(</span><em>dtype</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.DeclAst.set_dtype" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setter method for type of declaration.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.DeclAst.set_enumlist">
+<code class="descname">set_enumlist</code><span class="sig-paren">(</span><em>enumlist</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.DeclAst.set_enumlist" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setter method for enumlist if declaration is enum type.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.DeclAst.set_module">
+<code class="descname">set_module</code><span class="sig-paren">(</span><em>module</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.DeclAst.set_module" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setter method for module of declaration.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.DeclAst.set_scope">
+<code class="descname">set_scope</code><span class="sig-paren">(</span><em>scope</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.DeclAst.set_scope" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setter method for scope of declaration.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.DeclAst.set_value">
+<code class="descname">set_value</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.DeclAst.set_value" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setter method for value of declaration.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.DeclAst.set_varname">
+<code class="descname">set_varname</code><span class="sig-paren">(</span><em>varname</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.DeclAst.set_varname" title="Permalink to this definition">¶</a></dt>
+<dd><p>Setter method for variable name of declaration.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="asts.EventAst">
+<em class="property">class </em><code class="descclassname">asts.</code><code class="descname">EventAst</code><span class="sig-paren">(</span><em>name</em>, <em>pre</em>, <em>eff</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.EventAst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p>
+<p>Event AST</p>
+<dl class="method">
+<dt id="asts.EventAst.get_eff">
+<code class="descname">get_eff</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.EventAst.get_eff" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of effect statements</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.EventAst.get_name">
+<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.EventAst.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">event name</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.EventAst.get_pre">
+<code class="descname">get_pre</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.EventAst.get_pre" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">precondition</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="asts.ExprAst">
+<em class="property">class </em><code class="descclassname">asts.</code><code class="descname">ExprAst</code><span class="sig-paren">(</span><em>etype</em>, <em>lexp</em>, <em>op=None</em>, <em>rexp=None</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.ExprAst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p>
+<p>Basic expression AST, for arithmetic and boolean</p>
+<dl class="method">
+<dt id="asts.ExprAst.get_lexp">
+<code class="descname">get_lexp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.ExprAst.get_lexp" title="Permalink to this definition">¶</a></dt>
+<dd><p>getter method for left child of expression.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.ExprAst.get_op">
+<code class="descname">get_op</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.ExprAst.get_op" title="Permalink to this definition">¶</a></dt>
+<dd><p>getter method for operation of expression.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.ExprAst.get_rexp">
+<code class="descname">get_rexp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.ExprAst.get_rexp" title="Permalink to this definition">¶</a></dt>
+<dd><p>getter method for right child of expression.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.ExprAst.get_type">
+<code class="descname">get_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.ExprAst.get_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is used to get the AST type to generate
+the java code.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.ExprAst.set_lexp">
+<code class="descname">set_lexp</code><span class="sig-paren">(</span><em>lexp</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.ExprAst.set_lexp" title="Permalink to this definition">¶</a></dt>
+<dd><p>setter method for left child of expression.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.ExprAst.set_op">
+<code class="descname">set_op</code><span class="sig-paren">(</span><em>op</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.ExprAst.set_op" title="Permalink to this definition">¶</a></dt>
+<dd><p>setter method for operation of expression.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="asts.InitAst">
+<em class="property">class </em><code class="descclassname">asts.</code><code class="descname">InitAst</code><span class="sig-paren">(</span><em>stmts</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.InitAst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Initialization AST.</p>
+<dl class="method">
+<dt id="asts.InitAst.get_stmts">
+<code class="descname">get_stmts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.InitAst.get_stmts" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">statements in the init block</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.InitAst.get_type">
+<code class="descname">get_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.InitAst.get_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is used to get the AST type to generate
+the java code.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="asts.IteAst">
+<em class="property">class </em><code class="descclassname">asts.</code><code class="descname">IteAst</code><span class="sig-paren">(</span><em>cond</em>, <em>then_stmts</em>, <em>else_stmts</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.IteAst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#asts.StmtAst" title="asts.StmtAst"><code class="xref py py-class docutils literal notranslate"><span class="pre">asts.StmtAst</span></code></a></p>
+<p>The AST for if-then-else statements</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="asts.PgmAst">
+<em class="property">class </em><code class="descclassname">asts.</code><code class="descname">PgmAst</code><span class="sig-paren">(</span><em>name</em>, <em>init</em>, <em>events</em>, <em>flags=None</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.PgmAst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>This is the AST of a general <em>Koord</em> program</p>
+<dl class="method">
+<dt id="asts.PgmAst.add_flag">
+<code class="descname">add_flag</code><span class="sig-paren">(</span><em>flag</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.PgmAst.add_flag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to add a flag to the existing set of flags</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.PgmAst.get_events">
+<code class="descname">get_events</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.PgmAst.get_events" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">events of program</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.PgmAst.get_flags">
+<code class="descname">get_flags</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.PgmAst.get_flags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get method for the program flags for various code generation requirements.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.PgmAst.get_init">
+<code class="descname">get_init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.PgmAst.get_init" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">init statements</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.PgmAst.get_name">
+<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.PgmAst.get_name" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get method for name.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.PgmAst.get_type">
+<code class="descname">get_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.PgmAst.get_type" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function is used to get the AST type to generate
+the java code.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="asts.PgmAst.has_flag">
+<code class="descname">has_flag</code><span class="sig-paren">(</span><em>flag</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.PgmAst.has_flag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to check whether the set of flags contains a given flag</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="asts.StmtAst">
+<em class="property">class </em><code class="descclassname">asts.</code><code class="descname">StmtAst</code><span class="sig-paren">(</span><em>stype</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.StmtAst" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">list</span></code></p>
+<p>Generic AST for statements</p>
+<dl class="method">
+<dt id="asts.StmtAst.get_type">
+<code class="descname">get_type</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#asts.StmtAst.get_type" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the statement type</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="asts.is_ast">
+<code class="descclassname">asts.</code><code class="descname">is_ast</code><span class="sig-paren">(</span><em>cand</em><span class="sig-paren">)</span><a class="headerlink" href="#asts.is_ast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines whether an object is a defined AST</p>
+<dl class="docutils">
+<dt>Args:</dt>
+<dd>cand (object) : candidate AST</dd>
+<dt>Returns:</dt>
+<dd>result (bool) : whether candidate is an AST in our asttypes.</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="asttypes.html" title="previous chapter">AST types</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/asts.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2018, Ritwika Ghosh.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.7.2</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/asts.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
